@@ -25,6 +25,7 @@
 
 package com.swordlord.gozer.components.csv;
 
+import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -42,7 +43,6 @@ import com.swordlord.gozer.util.ResourceLoader;
 import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
 import com.swordlord.sobf.common.config.UserPrefs;
 
-import com.swordlord.sobf.wicket.ui.gozerframe.GWReportContext;
 
 /**
  * 

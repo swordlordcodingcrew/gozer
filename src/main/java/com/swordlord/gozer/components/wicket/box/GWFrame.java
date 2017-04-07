@@ -25,13 +25,12 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.box;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import com.swordlord.gozer.components.generic.ObjectBase;
-import com.swordlord.sobf.wicket.tools.SecureForm;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 /**
  * Implements root element 'frame' in gozer templates. Supports GListAndDetail

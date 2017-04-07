@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.box;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
@@ -47,7 +48,6 @@ import com.swordlord.gozer.components.wicket.detail.GWDetailPanel;
 import com.swordlord.gozer.components.wicket.list.GWListAndDetail;
 import com.swordlord.gozer.components.wicket.list.GWListPanel;
 import com.swordlord.gozer.components.wicket.report.GWReport;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 /**
  * 

@@ -32,7 +32,9 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import com.swordlord.gozer.ui.gozerframe.GWContext;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractToolbar;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -54,8 +56,6 @@ import com.swordlord.gozer.components.wicket.ActionBaseListView;
 import com.swordlord.gozer.components.wicket.datatable.GozerDataTable;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
-
 /**
  * TODO JavaDoc for GWListActionToolbar.java
  * 
@@ -65,7 +65,7 @@ import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 @SuppressWarnings("serial")
 public class GWListActionToolbar extends AbstractToolbar
 {
-	protected static final Log LOG = LogFactory.getLog(REPLACEME);
+	protected static final Log LOG = LogFactory.getLog(GWListActionToolbar.class);
 	
 	private static final Set<Class<? extends ObjectBase>> KNOW_ACTIONS = new HashSet<Class<? extends ObjectBase>>();
 

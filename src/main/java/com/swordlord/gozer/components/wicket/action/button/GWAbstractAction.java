@@ -45,7 +45,6 @@ import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.gozer.util.ResourceLoader;
-import com.swordlord.repository.datarow.Assessment.AssessmentDataRowKey;
 import com.swordlord.sobf.common.i18n.Translator;
 import com.swordlord.sobf.common.jcr.JcrHelper;
 
@@ -90,14 +89,6 @@ public abstract class GWAbstractAction extends ImageButton implements IGozerActi
     protected final boolean isButtonEnabled()
     {
         return isEnabled() && isEnableAllowed();
-    }
-
-
-
-    public AssessmentDataRowKey getCurrentAssessment()
-    {
-        IGozerSessionInfo session = getGozerSession();
-        return session.getCurrentAssessment();
     }
 
     @Override

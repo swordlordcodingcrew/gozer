@@ -2,6 +2,8 @@ package com.swordlord.gozer.components.wicket.report;
 
 import java.util.LinkedList;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Logger;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -28,7 +30,7 @@ import com.swordlord.gozer.components.wicket.list.GWListPanel;
 @SuppressWarnings("serial")
 public class GWReportPanel extends GWPanel
 {
-	protected static final Log LOG = LogFactory.getLog(REPLACEME);
+	protected static final Log LOG = LogFactory.getLog(GWReportPanel.class);
 
 	public GWReportPanel(String id, final IModel<?> model, GReportPanel gfReportPanel)
 	{

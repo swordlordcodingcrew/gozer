@@ -38,7 +38,7 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
-import com.swordlord.common.ui.icons.Icons;
+import com.swordlord.gozer.ui.icons.Icons;
 import com.swordlord.gozer.components.generic.field.GLibraryField;
 import com.swordlord.gozer.components.wicket.GWPanel;
 import com.swordlord.gozer.components.wicket.action.button.GWFKeyButton;

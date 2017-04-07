@@ -27,6 +27,7 @@ package com.swordlord.gozer.components.wicket;
 
 import java.text.MessageFormat;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -35,8 +36,6 @@ import com.swordlord.gozer.components.generic.ObjectBase;
 import com.swordlord.gozer.components.generic.box.GHBox;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.sobf.common.i18n.Translator;
-
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 @SuppressWarnings("serial")
 public abstract class GWPanel extends Panel implements IWicketComponent

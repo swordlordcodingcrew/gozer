@@ -25,6 +25,8 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.action.button.modal;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
+import com.swordlord.gozer.ui.gozerframe.GozerModalWindow;
 import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,10 +40,7 @@ import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.jalapeno.dataview.DataViewBase;
-import com.swordlord.repository.datarow.Assessment.AssessmentDataRowKey;
 
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
-import com.swordlord.sobf.wicket.ui.gozerframe.GozerModalWindow;
 
 @SuppressWarnings("serial")
 public abstract class GWModalAction extends Panel implements IGozerAction
@@ -91,12 +90,6 @@ public abstract class GWModalAction extends Panel implements IGozerAction
 		link.add(_image);
 
 		add(link);
-	}
-
-	public AssessmentDataRowKey getCurrentAssessment()
-	{
-		IGozerSessionInfo session = getGozerSession();
-		return session.getCurrentAssessment();
 	}
 
 	@Override

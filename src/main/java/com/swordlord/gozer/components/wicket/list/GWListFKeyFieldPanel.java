@@ -27,6 +27,8 @@ package com.swordlord.gozer.components.wicket.list;
 
 import java.text.MessageFormat;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
+import com.swordlord.gozer.ui.gozerframe.GozerModalWindow;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.basic.Label;
@@ -45,8 +47,6 @@ import com.swordlord.jalapeno.datarow.DataRowBase;
 import com.swordlord.jalapeno.datatable.DataTableBase;
 import com.swordlord.jalapeno.dataview.DataViewBase;
 import com.swordlord.jalapeno.fkey.FKeyBase;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
-import com.swordlord.sobf.wicket.ui.gozerframe.GozerModalWindow;
 
 /**
  * TODO JavaDoc for GWListFKeyFieldPanel.java

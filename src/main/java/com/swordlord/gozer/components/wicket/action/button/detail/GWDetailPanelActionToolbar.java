@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -57,7 +58,6 @@ import com.swordlord.gozer.components.wicket.action.button.generic.GWNewButton;
 import com.swordlord.gozer.components.wicket.action.button.generic.GWOtherButton;
 import com.swordlord.gozer.components.wicket.action.button.generic.GWRemoveButton;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 @SuppressWarnings("serial")
 public class GWDetailPanelActionToolbar extends GWPanel

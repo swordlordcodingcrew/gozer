@@ -25,6 +25,7 @@
 
 package com.swordlord.gozer.components.fop;
 
+import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.wicket.Application;
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
@@ -38,7 +39,6 @@ import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.gozer.util.ResourceLoader;
 import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
 import com.swordlord.sobf.common.config.UserPrefs;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWReportContext;
 
 /**
  * 

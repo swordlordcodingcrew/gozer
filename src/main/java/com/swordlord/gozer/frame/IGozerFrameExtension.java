@@ -39,7 +39,7 @@ import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.jalapeno.datacontainer.DataContainer;
 import com.swordlord.jalapeno.datarow.DataRowBase;
 import com.swordlord.jalapeno.datarow.DataRowKeyBase;
-import com.swordlord.repository.businessobject.BusinessObjectBase;
+import com.swordlord.jalapeno.businessobject.BusinessObjectBase;
 import com.swordlord.sobf.wicket.ui.page.RootPage;
 
 public interface IGozerFrameExtension

@@ -38,7 +38,7 @@ import org.odlabs.wiquery.core.events.WiQueryEventBehavior;
 import org.odlabs.wiquery.core.javascript.JsScope;
 import org.odlabs.wiquery.ui.datepicker.DatePicker;
 import org.odlabs.wiquery.ui.datepicker.DatePicker.ShowOnEnum;
-import com.swordlord.common.ui.icons.Icons;
+import com.swordlord.gozer.ui.icons.Icons;
 import com.swordlord.gozer.components.generic.field.GField;
 import com.swordlord.gozer.components.wicket.GWPanel;
 import com.swordlord.gozer.components.wicket.utils.FeedbackLabel;

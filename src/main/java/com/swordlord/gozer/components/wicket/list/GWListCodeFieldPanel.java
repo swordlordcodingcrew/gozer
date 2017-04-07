@@ -27,6 +27,7 @@ package com.swordlord.gozer.components.wicket.list;
 
 import java.util.List;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.model.IModel;
@@ -45,7 +46,6 @@ import com.swordlord.jalapeno.dataview.OrderingParam;
 import com.swordlord.repository.datatable.Code.CodeDataTable;
 import com.swordlord.repository.datatable.Code.base.CodeDataTableBase;
 import com.swordlord.sobf.common.config.UserPrefs;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 /**
  * A panel to represent a field in a Gozer list.
