@@ -1,0 +1,249 @@
+Apache Cayenne Upgrade Information
+==================================
+
+IMPORTANT: be sure to read all notes for the intermediate releases between your
+           current release and the release you are upgrading to.
+-------------------------------------------------------------------------------
+
+UPGRADING TO 3.1B1
+
+* In an attempt to better organize DI configuration and ultimately make it easier to understand, 
+  all properties and DI collection keys were placed in a single Constants interface. The property and key String 
+  values were changed to follow a single convention. Please refer to https://issues.apache.org/jira/browse/CAY-1665
+  for mapping between the old and the new names.
+
+  If you are upgrading from the earlier 3.1 releases, please change your code and runtime parameters accordingly.
+  3.0 users may still review the new property names as some of them existed prior to DI.
+
+UPGRADING TO 3.1M3
+
+* DataMap listeners are no longer supported. Global listeners registered through
+  annotations API can be used instead. E.g.:
+
+	public class SomeListener {
+		@PrePersist
+		public void onPrePersist(Object object) {
+			// callback method
+		}
+	}
+
+  To register listener class use following API:
+
+	runtime.getChannel().getEntityResolver().getCallbackRegistry().addListener(listenerInstance);
+
+  Note that DataMap listeners entries from old *.map.xml files will be ignored.
+
+
+UPGRADING TO 3.1M1
+
+The most essential change in Cayenne 3.1 is a new Dependency-Injection (DI) based
+bootstrap and configuration mechanism, which is not backwards compatible with 3.0.
+Read on to learn about specific areas that require attention when upgrading your
+application.
+
+* Upgrading 3.0.x mapping files: Open each of your existing projects in the new 
+  CayenneModeler. Agree to perform an upgrade when asked. Note that Cayenne
+  3.1 only supports one DataDomain per project, so if multiple domains existed in 
+  the project, you'll end up with multiple project files  after the upgrade. Each 
+  will require instantiation of a separate ServerRuntime in the code. 
+
+* Upgrading 2.0.x and earlier mappings files: Note that CayenneModeler
+  3.1 won't be able to upgrade projects created with a Modeler older than 3.0. To 
+  upgrade older projects do it in two steps - download Cayenne 3.0, and perform an
+  upgrade with 3.0 CayenneModeler. After that perform a second upgrade from 3.0 to
+  3.1.
+
+* Cayenne runtime bootstrap: In 3.1 all classes under "org.apache.cayenne.conf"
+  package were removed, superseded by dependency injection (DI) based configuration,
+  with main classes located under "org.apache.cayenne.configuration" and its 
+  subpackages. E.g. to instantiate the Cayenne stack in 3.1 you would do 
+  something like that:
+
+  ServerRuntime cayenneRuntime = new ServerRuntime("cayenne-UntitledDomain.xml");
+  
+  To obtain a new ObjectContext, the following API is used:
+		
+  ObjectContext context = cayenneRuntime.getContext();
+
+* No static configuration singleton: Cayenne 3.1 completely gets rid of a (previously 
+  optional, but widely used) "Configuration.sharedConfiguration" singleton. This 
+  change was done to acknowledge the fact that single configuration per application 
+  is just a special case, and generally user can instantiate as many configurations 
+  (or ServerRuntime's in 3.1 terms) as appropriate. This however means that the 
+  users must now decide themselves where in their application it is appropriate to 
+  store ServerRuntime instance (or instances). E.g. it can be stored as an attribute 
+  of ServletContext (check out "org.apache.cayenne.configuration.web.CayenneFilter" and 
+  "org.apache.cayenne.configuration.web.WebUtil"), reside in a user's favorite dependency
+  injection container (e.g. Spring), or even be saved in a user's own static singleton 
+  variable.
+
+* No static DataContext creation methods: Methods like DataContext.createDataContext()
+  were relying on static configuration singleton, which was removed (see above). Use
+  ServerRuntime instance methods to create context instances.
+
+* Webapp configuration changes: "org.apache.cayenne.conf.WebApplicationContextFilter"
+  was replaced by "org.apache.cayenne.configuration.web.CayenneFilter". See CayenneFilter
+  javadocs for details on of the init parameters.
+
+* ROP Server configuration changes: "org.apache.cayenne.remote.hessian.service.HessianServlet"
+  was replaced by "org.apache.cayenne.configuration.rop.server.ROPHessianServlet". See
+  ROPHessianServlet javadocs for details on its init parameters. 
+
+* ROP Client configuration changes: There is now a special DI "runtime" object -
+  "org.apache.cayenne.configuration.rop.client.ClientRuntime", so client connection
+  and channel can be (optionally) managed via DI, with connection parameters 
+  specified as properties. E.g.:
+  
+	Map<String, String> properties = new HashMap<String, String>();
+	properties.put(ClientModule.ROP_SERVICE_URL, "http://localhost:8080/tutorial/cayenne-service");
+	properties.put(ClientModule.ROP_SERVICE_USER_NAME, "cayenne-user");
+	properties.put(ClientModule.ROP_SERVICE_PASSWORD, "secret");
+
+	ClientRuntime runtime = new ClientRuntime(properties);
+	ObjectContext context = runtime.getContext();
+	
+  The advantage of this approach in that all the client stack objects are managed
+  by the DI container and a user can customize/override various pieces.
+
+* Deprecated API removal: All API deprecated as of 3.0 is removed. This may require 
+  some code cleanup. Since 3.0 javadocs for suggested replacements. Also if custom 
+  class generation templates are used, doublecheck that they do not reference removed 
+  EntityUtil methods, which were replaced by variables placed directly into Velocity context.
+
+* Custom DbAdapter / DbAdapterFactory: The interface used by Cayenne to allow custom 
+  DbAdapters to be auto-detected with AutoAdapter has changed from 
+  org.apache.cayenne.dba.DbAdapterFactory to org.apache.cayenne.configuration.DbAdapterDetector. 
+  Note that now a custom implementation can rely on Cayenne DI to obtain Cayenne 
+  dependencies via @Inject annotation. To register a custom implementation with 
+  Cayenne DI container, one might do this in the custom DI module:
+
+  ... 
+  public void configure(Binder binder) {
+  ...
+     binder.bindList(DbAdapterFactory.class).add(new MyDbAdapterDetector());
+  }
+
+* Custom DataSourceFactory: The interface used by Cayenne to load custom DataSource 
+  factories has changed from "org.apache.cayenne.conf.DataSourceFactory" to 
+  "org.apache.cayenne.configuration.DataSourceFactory". This new interface must be 
+  implemented by the custom factories. Note that now a custom implementation can 
+  rely on Cayenne DI to obtain Cayenne dependencies via @Inject annotation.
+
+* Replaced JNDI preferences hack with runtime properties: "JNDI hack", as it was 
+  known prior to 3.1, allowed to define a named database connection using CayenneModeler, 
+  and then Cayenne would read this connection information from Modeler preferences 
+  and use it as a failover for JNDI DataNodes. The problem with this is that it 
+  required CayenneModeler and HSQLDB jars on the application classpath, and also that the 
+  preferences database was prone to data corruption. In 3.1, preferences hack is no
+  longer available. Instead JNDI (or really any other type of DataSourceFactory) 
+  can be overridden via runtime properties (or by redefining DataSourceFactoryLoader
+  via DI). See org.apache.cayenne.configuration.server.PropertyDataSourceFactory javadocs for
+  details. Here are some simple examples:
+
+  -Dcayenne.jdbc.url=jdbc://urloverride 
+  -Dcayenne.jdbc.driver=com.example.MyDriver 
+  -Dcayenne.jdbc.username=foo
+  -Dcayenne.jdbc.password=bar
+
+
+UPGRADING TO 3.0B1
+
+* Per CAY-1281 pre-persist callback was renamed to post-add (while pre-persist now has a different meaning).
+  To upgrade your project, open it in the Modeler and agree to perform an automated upgrade.
+
+UPGRADING TO 3.0M6
+
+* Per CAY-1154, org.apache.cayenne.access.reveng package was renamed to org.apache.cayenne.map.naming. So, if you
+  use your own naming strategies, you should update as well.
+
+* Per CAY-1161, custom columns feature in SelectQuery was deprecated. Consider switching to EJBQL as an alternative.
+  Custom columns support will likely go away completely after 3.0M6.
+
+* Per CAY-1175, 'columnNameCapitalization' property of SQLTemplate now takes an enum, not a String. 
+  Calling code should be fixed.
+
+UPGRADING TO 3.0M5
+
+* Per CAY-1127, query "name" property is no longer used as an internal cache key. This change should be transparent
+  to most users, as Cayenne generates a correct cache key internally when needed, however if a user code explicitly
+  depended on the value of the cache key, it should be updated to use something like this:
+    
+  String cacheKey = query.getQueryMetadata(entityResolver).getCacheKey();
+
+UPGRADING TO 3.0M4
+
+* Per CAY-1049 API of the internal classes that participate in SelectQuery translation has changed in a way that
+  is not backwards compatible. This should not affect regular users, however if you implemented a custom DbAdapter,
+  check for classes that directly or indirectly inherit from QueryAssembler and QueryAssemblerHelper and fix them
+  if needed.
+
+UPGRADING TO 3.0M3
+
+* Java 5 is now required as a minimum for Cayenne Modeler and the Cayenne libraries.
+
+* After the move to Java 5, generics have been implemented in many of the Cayenne APIs. If you don't use generics in your project this should not affect you, but if you do you will need to review any new compiler errors or warnings. The effect of generics is at compile time only, so their introduction will not change the runtime behaviour of your application once compiled.
+
+UPGRADING TO 3.0M2
+
+* Lifecycle Callbacks require no setup:
+  Per CAY-843, lifecycle callback functionality is now built into DataContext and DataDomain, 
+  so all the custom code to set them up is no longer needed. Also as a result of this change
+  'org.apache.cayenne.intercept' package is removed from Cayenne.
+  Further information can be found here: http://cayenne.apache.org/doc/lifecycle-callbacks.html
+
+UPGRADING TO 3.0M1
+
+* Jar files:
+  - all jar files now include version numbers in their names.
+  - "cayenne-nodeps.jar" is renamed to "cayenne-server-x.x.x.jar" 
+  - "fat" cayenne.jar file that included dependencies is no longer distributed. 
+    All dependencies that it contained are included as separate jars under 
+    "cayenne-x.x.x/lib/third-party/". The new "cayenne-server-x.x.x.jar" plus 
+    dependencies should be used in place of cayenne.jar.
+  - A new "cayenne-agent-x.x.x.jar" is included. It is used for class enhancement 
+    with POJO's and JPA. "Classic" Cayenne users can ignore this file.
+    
+* Ant class generator is using what was called "version 1.2" by default. This means that if you were
+  using custom Velocity templates in 1.1 mode, you should either change the templates or specify 'version="1.1"'
+  in the buildfile explicitly.
+
+* Cross-platform Modeler Startup is now done without a batch file or a shell script. 
+  A "fat" CayenneModeler.jar is included in the "cayenne-x.x.x/bin" directory
+  and can be run either by double-clicking the jar (on platforms that support that)
+  or by running "java -jar CayenneModeler.jar".
+  
+* Note that FireBird adapter is no longer distributed with Cayenne. The one we had was half-working
+  and we could not support it anymore.
+  
+* DataContextTransactionEventListener, DataObjectTransactionEventListener, DataContextEvent all were deprecated
+  favor of callbacks. NOTE THAT THIS API WILL BE REMOVED IN THE FOLLOWING 3.0 MILESTONES.
+  
+* Long PK: Cayenne now supports "long" primary key generation (previously it only supported "int"). You may
+  have to change the existing PK lookup tables on some databases to take advantage of that (this is optional,
+  and is needed if you expect your PK to exceed maximum value of an "int" allowed in your database). E.g. on 
+  MySQL you may run the following SQL:
+  
+  ALTER TABLE AUTO_PK_SUPPORT CHANGE COLUMN NEXT_ID NEXT_ID BIGINT NOT NULL;
+  
+
+UPGRADING TO 2.0.x
+
+Since 2.0, Cayenne is an Apache project, so all "org.objectstyle.*" java packages 
+where renamed to "org.apache.*" analogues. Since 1.2.x and 2.0.x release lines maintain
+full compatibility with each other, differing only in package names, upgrading to 2.0.x
+can be a first step in a safe upgrade to the latest version of Cayenne.
+
+* Upgrading mapping files:
+
+To upgrade the mapping files, open them in the new Modeler. You should see an upgrade 
+dialog. Once you confirm the upgrade 
+
+* Upgrading the code:
+
+Replace "org.objectstyle." with "org.apache." everywhere in imports and do a clean 
+recompile.
+
+* Upgrading logging configuration
+
+If you are using custom logging configuration file, make sure that all the 
+Cayenne loggers are changed from "org.objectstyle" to "org.apache".
