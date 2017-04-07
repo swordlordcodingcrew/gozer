@@ -27,7 +27,8 @@ package com.swordlord.gozer.components.wicket.action.button.generic;
 
 import java.io.ByteArrayOutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.model.Model;
@@ -57,7 +58,7 @@ import com.swordlord.gozer.session.IGozerSessionInfo;
 @SuppressWarnings("serial")
 public class GWCsvButton extends GWAbstractAction
 {
-	protected static final Log LOG = LogFactory.getLog(REPLACEME);
+	protected static final Log LOG = LogFactory.getLog(GWCsvButton.class);
 	
     /**
      * @param id
