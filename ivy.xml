@@ -8,9 +8,9 @@
 <ivy-module version="2.0">
     <info organisation="com.swordlord" module="gozer"/>
     <dependencies>
-		<dependency org="org.apache.wicket" name="wicket-core" rev="7.6.0"/>
-		<dependency org="org.apache.wicket" name="wicket-extensions" rev="7.6.0"/>
-		<dependency org="org.apache.cayenne" name="cayenne-server" rev="4.0.M5"/>
+		<dependency org="org.apache.wicket" name="wicket-core" rev="8.0.0-M5"/>
+		<dependency org="org.apache.wicket" name="wicket-extensions" rev="8.0.0-M5"/>
+		<dependency org="org.apache.cayenne" name="cayenne-server" rev="4.0.M5" transitive="false"/>
 		<dependency org="commons-lang" name="commons-lang" rev="2.6"/>
         <dependency org="commons-logging" name="commons-logging" rev="1.2"/>
         <dependency org="org.jdom" name="jdom2" rev="2.0.6"/>
