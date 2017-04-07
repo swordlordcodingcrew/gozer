@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ SwordLord.com, gozer
+ Version Number    : $Revision: 1.00 $
+ Date of last edit : $Date: 2017/03/03 $
+-->
+<project name="gozer" default="resolve" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<description>${ant.project.name} project master build file</description>
+	
+	<property name="masterbuild.dir" location="${basedir}"/>
+
+	<!-- ================================================================= -->
+	<!-- ===  resolve all dependencies                                 === -->
+	<!-- =================================================================-->
+	<target name="resolve" description="--> retrieve dependencies with ivy">
+		<ivy:retrieve pattern="lib/jar/[artifact](-[classifier]).[ext]"/>
+	</target>
+	
+	<target name="clean" description="Remove build directories">
+		<delete dir="lib"/>
+	</target>
+	
+	<target name="clean-all" depends="clean" description="clean ivy cache">
+	        <ivy:cleancache />
+	</target>
+
+</project>

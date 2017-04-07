@@ -1,0 +1,20 @@
+<!--
+ SwordLord.com, Gozer is not Zuul
+ Version Number    : $Revision: 1.00 $
+ Date of last edit : $Date: 2017/03/03 $
+
+ check http://mvnrepository.com/ for ivy config
+-->
+<ivy-module version="2.0">
+    <info organisation="com.swordlord" module="gozer"/>
+    <dependencies>
+		<dependency org="org.apache.wicket" name="wicket-core" rev="7.6.0"/>
+		<dependency org="org.apache.wicket" name="wicket-extensions" rev="7.6.0"/>
+		<dependency org="org.apache.cayenne" name="cayenne-server" rev="4.0.M5"/>
+		<dependency org="commons-lang" name="commons-lang" rev="2.6"/>
+        <dependency org="commons-logging" name="commons-logging" rev="1.2"/>
+        <dependency org="org.jdom" name="jdom2" rev="2.0.6"/>
+        <dependency org="org.jfree" name="jfreechart" rev="1.0.19"/>
+        <dependency org="org.apache.poi" name="poi" rev="3.15"/>
+    </dependencies>
+</ivy-module>
