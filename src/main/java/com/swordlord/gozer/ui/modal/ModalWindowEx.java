@@ -30,7 +30,7 @@ import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.jalapeno.datarow.DataRowBase;
-import org.somap.sobf.common.i18n.Translator;
+import com.swordlord.sobf.common.i18n.Translator;
 
 /**
  * TODO JavaDoc for ModalWindowEx.java
