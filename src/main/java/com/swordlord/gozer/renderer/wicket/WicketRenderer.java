@@ -25,6 +25,7 @@
 
 package com.swordlord.gozer.renderer.wicket;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
@@ -33,7 +34,6 @@ import com.swordlord.gozer.components.generic.ObjectBase;
 import com.swordlord.gozer.components.generic.box.GFrame;
 import com.swordlord.gozer.components.wicket.box.GWFrame;
 import com.swordlord.gozer.renderer.generic.FrameRendererBase;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 /**
  * @author LordEidi

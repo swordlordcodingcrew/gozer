@@ -38,7 +38,7 @@ import javax.swing.ImageIcon;
 // *******************************
 public class Icons
 {
-	public final static String BASIS_URL = "/org/somap/common/ui/icons/";
+	public final static String BASIS_URL = "/com/swordlord/gozer/ui/icons/";
 
 	// Icons actions
 	public final static String ICON_ACTIONS_ANALYSIS = BASIS_URL + "actions/analysis.png";

@@ -40,13 +40,13 @@ import org.apache.cayenne.FaultFailureException;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.Persistent;
 import org.apache.cayenne.access.DataContext;
-import org.apache.cayenne.access.DataContextFactory;
 import org.apache.cayenne.access.DataDomain;
 import org.apache.cayenne.access.DataNode;
 import org.apache.cayenne.access.DataRowStore;
 import org.apache.cayenne.access.ObjectStore;
 import org.apache.cayenne.configuration.Configuration;
 import org.apache.cayenne.configuration.DefaultConfiguration;
+import org.apache.cayenne.configuration.server.DataContextFactory;
 import org.apache.cayenne.map.DataMap;
 import org.apache.cayenne.map.ObjEntity;
 import org.apache.cayenne.validation.BeanValidationFailure;
@@ -232,7 +232,7 @@ public class DBConnection
 						Object info = it.next();
 						if (info != null)
 						{
-							Log.instance().getLogger().info(info);
+							LOG.info(info);
 						}
 
 						if (info instanceof BeanValidationFailure)
@@ -246,31 +246,31 @@ public class DBConnection
 			}
 
 			String strError = "Persist crashed: " + vex.getLocalizedMessage() + ": " + vex.getCause() + "\n\r" + strMessage;
-			Log.instance().getLogger().info(strError);
+			LOG.info(strError);
             // ErrorDialog.reportError("validation: " + strMessage);
 			return false;
 		} catch (DeleteDenyException dde)
 		{
 			String strError = "Persist crashed: " + dde.getLocalizedMessage() + ": " + dde.getCause();
-			Log.instance().getLogger().info(strError);
+			LOG.info(strError);
             // ErrorDialog.reportError(dde.getCause().getMessage());
 			return false;
 		} catch (FaultFailureException ffe)
 		{
 			String strError = "Persist crashed: " + ffe.getLocalizedMessage() + ": " + ffe.getCause();
-			Log.instance().getLogger().info(strError);
+			LOG.info(strError);
             // ErrorDialog.reportError(ffe.getCause().getMessage());
 			return false;
 		} catch (CayenneRuntimeException cex)
 		{
 			String strError = "Persist crashed: " + cex.getLocalizedMessage() + ": " + cex.getCause();
-			Log.instance().getLogger().info(strError);
+			LOG.info(strError);
             // ErrorDialog.reportError(cex.getCause().getMessage());
 			return false;
 		} catch (Exception e)
 		{
 			String strError = "Persist crashed: " + e.getLocalizedMessage() + ": " + e.getCause();
-			Log.instance().getLogger().info(strError);
+			LOG.info(strError);
             // ErrorDialog.reportError(e.getCause().getMessage());
 			return false;
 		}

@@ -38,6 +38,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
+import com.swordlord.common.prefs.UserPrefsFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.fop.apps.FOPException;
@@ -45,8 +46,6 @@ import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
-
-import com.swordlord.sobf.common.config.UserPrefs;
 
 
 /**
@@ -101,7 +100,7 @@ public class FopFactoryHelper
 	
 	public String getCharset()
 	{
-		return UserPrefs.instance().getProperty("charset", "UTF-8", FopFactoryHelper.class);
+		return UserPrefsFactory.getUserPrefs().getProperty("charset", "UTF-8", FopFactoryHelper.class);
 	}
 	
 	public void transform(String strSource, Result result) throws TransformerConfigurationException, TransformerException
