@@ -14,6 +14,7 @@
 		<dependency org="commons-lang" name="commons-lang" rev="2.6"/>
         <dependency org="commons-logging" name="commons-logging" rev="1.2"/>
         <dependency org="org.apache.commons" name="commons-configuration2" rev="2.1.1"/>
+        <dependency org="org.apache.xmlgraphics" name="fop" rev="2.1"/>
         <dependency org="org.jdom" name="jdom2" rev="2.0.6"/>
         <dependency org="org.jfree" name="jfreechart" rev="1.0.19"/>
         <dependency org="org.apache.poi" name="poi" rev="3.15"/>
