@@ -27,6 +27,7 @@ package com.swordlord.gozer.components.wicket.detail;
 
 import java.util.List;
 
+import com.swordlord.common.prefs.UserPrefsFactory;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.model.IModel;
@@ -44,7 +45,6 @@ import com.swordlord.jalapeno.datarow.DataRowBase;
 import com.swordlord.jalapeno.dataview.OrderingParam;
 import com.swordlord.repository.datatable.Code.CodeDataTable;
 import com.swordlord.repository.datatable.Code.base.CodeDataTableBase;
-import com.swordlord.sobf.common.config.UserPrefs;
 
 @SuppressWarnings("serial")
 public class GWDetailCodeFieldPanel extends GWPanel
@@ -70,7 +70,7 @@ public class GWDetailCodeFieldPanel extends GWPanel
 		final DataBindingModel dropDownModel = new DataBindingModel(dataBinding);
 
 		CodeDataTable tabCode = new CodeDataTable(new DataContainer());
-		tabCode.fillByLanguageAndCodeName(UserPrefs.instance().getLanguageCode(), fieldForm.getCodeType());
+		tabCode.fillByLanguageAndCodeName(UserPrefsFactory.getUserPrefs().getLanguageCode(), fieldForm.getCodeType());
 
         OrderingParam orderingParam = new OrderingParam(CodeDataTableBase.SORT_NR_PROPERTY, true, false);
         List<DataRowBase> codes = tabCode.getDataRows(orderingParam);

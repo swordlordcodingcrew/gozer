@@ -25,6 +25,7 @@
 
 package com.swordlord.gozer.components.fop;
 
+import com.swordlord.common.prefs.UserPrefs;
 import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.wicket.Application;
 import org.jdom2.Document;
@@ -38,7 +39,6 @@ import com.swordlord.gozer.renderer.fop.FopRenderer;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.gozer.util.ResourceLoader;
 import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
-import com.swordlord.sobf.common.config.UserPrefs;
 
 /**
  * 
@@ -68,7 +68,8 @@ public class GFopReport extends GFopObjectBase
 		{
 			_app = app;
 			_session = session;
-			
+
+			// TODO: fix this
 			String strReportFile = UserPrefs.APP_REPORT_GOZER_FILES_FOLDER + report.getDefiniton();
 			
 			DefaultReportPanelExtension ext = new DefaultReportPanelExtension(session, strReportFile, gfe.getDataBindingContext());

@@ -37,10 +37,11 @@ import java.util.zip.ZipFile;
 
 import javax.swing.table.AbstractTableModel;
 
+import com.swordlord.common.i18n.ITranslator;
+import com.swordlord.common.i18n.TranslatorFactory;
 import com.swordlord.repository.database.backuprestore.BackupRestoreTablesItem;
 import com.swordlord.repository.database.backuprestore.BackupRestoreTablesList;
 import com.swordlord.repository.database.backuprestore.ManifestFile;
-import com.swordlord.sobf.common.i18n.Translator;
 
 import com.swordlord.sobf.swing.Controller;
 
@@ -54,7 +55,7 @@ import com.swordlord.sobf.swing.Controller;
 @SuppressWarnings("serial")
 public class ObjEntityTableModel extends AbstractTableModel
 {
-	private Translator _ls = Controller.instance().getTranslator();
+	private ITranslator _tr = TranslatorFactory.getTranslator();
 	
 	private BackupRestoreTablesList _listTables;
 	private byte _bytDisplayType = DISPLAY_TYPE_BACKUP;
@@ -159,19 +160,19 @@ public class ObjEntityTableModel extends AbstractTableModel
 			{
 				if(_bytDisplayType == DISPLAY_TYPE_BACKUP)
 				{
-					return _ls.getString("export", ObjEntityTableModel.class);
+					return _tr.getString("export", ObjEntityTableModel.class);
 				}
 				else
 				{
-					return _ls.getString("import", ObjEntityTableModel.class);					
+					return _tr.getString("import", ObjEntityTableModel.class);
 				}
 			}
 			case 1:
-				return _ls.getString("table", ObjEntityTableModel.class);
+				return _tr.getString("table", ObjEntityTableModel.class);
 			case 2:
-				return _ls.getString("query", ObjEntityTableModel.class);
+				return _tr.getString("query", ObjEntityTableModel.class);
 			default:
-				throw new Error(_ls.getString("column_out_of_range", ObjEntityTableModel.class));
+				throw new Error(_tr.getString("column_out_of_range", ObjEntityTableModel.class));
 		}
 	} 
 
@@ -186,7 +187,7 @@ public class ObjEntityTableModel extends AbstractTableModel
 	{
 		if(rowIndex < 0 | rowIndex > _listTables.size())
 		{
-			throw new Error(_ls.getString("column_out_of_range", ObjEntityTableModel.class));
+			throw new Error(_tr.getString("column_out_of_range", ObjEntityTableModel.class));
 		}
 		
 		BackupRestoreTablesItem item = _listTables.getItem(rowIndex);
@@ -228,7 +229,7 @@ public class ObjEntityTableModel extends AbstractTableModel
 	{
 		if(rowIndex < 0 | rowIndex > _listTables.size())
 		{
-			throw new Error(_ls.getString("column_out_of_range", ObjEntityTableModel.class));
+			throw new Error(_tr.getString("column_out_of_range", ObjEntityTableModel.class));
 		}
 		
 		BackupRestoreTablesItem item = _listTables.getItem(rowIndex);

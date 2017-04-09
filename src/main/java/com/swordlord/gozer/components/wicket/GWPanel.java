@@ -27,6 +27,9 @@ package com.swordlord.gozer.components.wicket;
 
 import java.text.MessageFormat;
 
+import com.swordlord.common.i18n.ITranslator;
+import com.swordlord.common.i18n.TranslatorFactory;
+import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,14 +37,12 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import com.swordlord.gozer.components.generic.ObjectBase;
 import com.swordlord.gozer.components.generic.box.GHBox;
-import com.swordlord.gozer.frame.IGozerFrameExtension;
-import com.swordlord.sobf.common.i18n.Translator;
 
 @SuppressWarnings("serial")
 public abstract class GWPanel extends Panel implements IWicketComponent
 {
 	protected static final Log LOG = LogFactory.getLog(GWPanel.class);
-	protected Translator _translator = new Translator();
+	protected ITranslator _tr = TranslatorFactory.getTranslator();
 
 	public GWPanel(String id, IModel<?> model)
 	{
@@ -99,7 +100,7 @@ public abstract class GWPanel extends Panel implements IWicketComponent
 		
 		LOG.info(MessageFormat.format("Loading caption from translation table. Path: {0} Key: {1}", strPath, strKey));
 		
-		String translation = _translator.getString(strPath, strKey);
+		String translation = _tr.getString(strPath, strKey);
 		
 		return translation == null ? caption : translation;
 	}

@@ -49,7 +49,6 @@ import com.swordlord.gozer.databinding.DataBindingField;
 import com.swordlord.gozer.datatypeformat.BooleanTypeFormat;
 import com.swordlord.gozer.datatypeformat.DateTypeFormat;
 import com.swordlord.jalapeno.datatable.DataTableBase;
-import com.swordlord.jalapeno.ead.EADManager;
 
 @SuppressWarnings("serial")
 public class GWDetailPanel extends GWPanel
@@ -86,10 +85,12 @@ public class GWDetailPanel extends GWPanel
                         "com.swordlord.repository.datatable." + tblName + ".base." + tblName + "DataTableBase");
                 String[] listOfFields = dtb.getPropertyList();
 
-                if (!formObject.getClass().equals(GLibraryField.class) && !formObject.getClass().equals(GOneToNField.class)
-                        && !EADManager.instance().isAttributeDefined(listOfFields, tblName, fieldName))
+                // TODO re-add EAD Manager
+                //if (!formObject.getClass().equals(GLibraryField.class) && !formObject.getClass().equals(GOneToNField.class)
+                //        && !EADManager.instance().isAttributeDefined(listOfFields, tblName, fieldName))
+                if (!formObject.getClass().equals(GLibraryField.class) && !formObject.getClass().equals(GOneToNField.class))
                 {
-                    String msg = _translator.getString("com.swordlord.sobf.wicket.message", "virutal_attribute_not_defined_db");
+                    String msg = _tr.getString("com.swordlord.sobf.wicket.message", "virutal_attribute_not_defined_db");
                     msg = MessageFormat.format(msg + " ({0}, {1})", fieldName, tblName);
                     LOG.warn(msg);
                     Label label = new Label("cell", "<td colspan=3><b><font color=red>" + msg + "<br></font></b></td>");

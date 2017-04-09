@@ -25,6 +25,7 @@
 
 package com.swordlord.gozer.renderer.wicket;
 
+import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
@@ -34,7 +35,6 @@ import com.swordlord.gozer.components.generic.report.GReportPanel;
 import com.swordlord.gozer.components.wicket.report.GWReportPanel;
 import com.swordlord.gozer.frame.GozerReportExtension;
 import com.swordlord.gozer.renderer.generic.ReportRendererBase;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWReportContext;
 
 /**
  * TODO JavaDoc for WicketReportRenderer.java

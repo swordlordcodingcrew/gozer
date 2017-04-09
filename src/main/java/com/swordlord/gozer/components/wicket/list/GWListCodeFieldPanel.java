@@ -27,6 +27,7 @@ package com.swordlord.gozer.components.wicket.list;
 
 import java.util.List;
 
+import com.swordlord.common.prefs.UserPrefsFactory;
 import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
@@ -45,7 +46,6 @@ import com.swordlord.jalapeno.datarow.DataRowBase;
 import com.swordlord.jalapeno.dataview.OrderingParam;
 import com.swordlord.repository.datatable.Code.CodeDataTable;
 import com.swordlord.repository.datatable.Code.base.CodeDataTableBase;
-import com.swordlord.sobf.common.config.UserPrefs;
 
 /**
  * A panel to represent a field in a Gozer list.
@@ -69,7 +69,7 @@ public class GWListCodeFieldPanel extends GWPanel
         final DataBindingModel dropDownModel = new DataBindingModel(dataBinding, (DataRowBase) model.getObject());
 
         CodeDataTable tabCode = new CodeDataTable(new DataContainer());
-        tabCode.fillByLanguageAndCodeName(UserPrefs.instance().getLanguageCode(), field.getCodeType());
+        tabCode.fillByLanguageAndCodeName(UserPrefsFactory.getUserPrefs().getLanguageCode(), field.getCodeType());
 
         OrderingParam orderingParam = new OrderingParam(CodeDataTableBase.SORT_NR_PROPERTY, true, false);
         List<DataRowBase> codes = tabCode.getDataRows(orderingParam);

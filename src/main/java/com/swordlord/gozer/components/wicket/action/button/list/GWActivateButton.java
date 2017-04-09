@@ -36,7 +36,6 @@ import com.swordlord.gozer.components.generic.action.GActivateAction;
 import com.swordlord.gozer.components.wicket.action.button.GWAbstractAction;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.jalapeno.datarow.DataRowKeyBase;
-import com.swordlord.repository.datarow.Assessment.AssessmentDataRowKey;
 
 /**
  * TODO JavaDoc for GWActivateButton.java
@@ -79,27 +78,14 @@ public class GWActivateButton extends GWAbstractAction
 	@Override
 	public void onBeforeRender()
 	{
-		 super.onBeforeRender();
+		super.onBeforeRender();
 
-		 AssessmentDataRowKey keyCurrentAssessment = getCurrentAssessment();
+		PageParameters pp = new PageParameters();
+		pp.add("id", Icons.ICON_LIGHTBULB_OFF);
 
-		 if((keyCurrentAssessment != null) && (keyCurrentAssessment.toString().compareTo(_key.toString()) == 0))
-		 {
-            PageParameters pp = new PageParameters();
-            pp.add("id", Icons.ICON_LIGHTBULB);
-            setImageResourceReference(new PackageResourceReference("img"), pp);
+		setImageResourceReference(new PackageResourceReference("img"), pp);
 
-			 setEnabled(true);
-		 }
-		 else
-		 {
-            PageParameters pp = new PageParameters();
-            pp.add("id", Icons.ICON_LIGHTBULB_OFF);
-
-            setImageResourceReference(new PackageResourceReference("img"), pp);
-
-			 setEnabled(true);
-		 }
+        setEnabled(true);
 	}
 
 	@Override
