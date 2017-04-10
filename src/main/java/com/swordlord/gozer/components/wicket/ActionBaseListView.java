@@ -28,7 +28,6 @@ package com.swordlord.gozer.components.wicket;
 import java.util.List;
 
 import com.swordlord.gozer.ui.gozerframe.GWContext;
-import com.swordlord.jalapeno.DBGenerator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.markup.html.WebMarkupContainer;

@@ -27,6 +27,7 @@ package com.swordlord.gozer.components.wicket.action;
 
 import java.util.List;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
@@ -35,7 +36,6 @@ import com.swordlord.gozer.components.generic.ObjectBase;
 import com.swordlord.gozer.components.generic.action.GActionBase;
 import com.swordlord.gozer.components.wicket.ActionBaseListView;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 @SuppressWarnings("serial")
 public class GWActionToolbar extends GWAbstractActionContainer
