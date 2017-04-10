@@ -134,15 +134,6 @@ public class ModalWindowEx extends ModalWindow
 	}
 
     /**
-     * @return the name of the current assessment as chosen within the session
-     */
-	public String getCurrentAssessmentName()
-	{
-		IGozerSessionInfo session = getGozerSession();
-		return session.getCurrentAssessmentName();
-	}
-
-    /**
      * @return pointer to the session
      */
 	public IGozerSessionInfo getGozerSession()

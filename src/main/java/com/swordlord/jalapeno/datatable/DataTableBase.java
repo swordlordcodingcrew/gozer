@@ -32,6 +32,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import com.swordlord.gozer.security.Roles;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.map.ObjAttribute;
 import org.apache.cayenne.map.ObjEntity;
@@ -43,7 +44,6 @@ import com.swordlord.jalapeno.datatable.event.DataTableEventDispatcher;
 import com.swordlord.jalapeno.dataview.OrderingParam;
 import com.swordlord.jalapeno.dataview.ViewFilter;
 import com.swordlord.jalapeno.fkey.FKeyBase;
-import com.swordlord.sobf.wicket.security.Roles;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -19,31 +19,21 @@
 **
 **-----------------------------------------------------------------------------
 **
-** $Id: IGozerSessionInfo.java 1170 2011-10-07 16:24:10Z LordEidi $
+** $Id: $
 **
 -----------------------------------------------------------------------------*/
-package com.swordlord.gozer.session;
+package com.swordlord.gozer.security;
 
-import java.util.Date;
-import java.util.UUID;
-
-import com.swordlord.gozer.user.ISubject;
-
-public interface IGozerSessionInfo
+/**
+ * TODO JavaDoc for Roles.java
+ * 
+ * @author LordEidi
+ * 
+ */
+public class Roles 
 {
-	ISubject getCurrentUser();
-
-	Date getLastLoginDate();
-
-	boolean hasRole(String strRole);
-	boolean isPermitted(String strPermissionIdentifier);
-	
-	boolean isAuthenticated();
-	boolean isSSOAuthenticated();
-	
-	UUID getMountPoint();
-	void setMountPoint(UUID uuid);
-
-	UUID getSelectedMenu();
-	void setSelectedMenu(UUID uuid);
+	public static final String ADMIN = "admin";
+	public static final String USER = "user";
 }
+
+

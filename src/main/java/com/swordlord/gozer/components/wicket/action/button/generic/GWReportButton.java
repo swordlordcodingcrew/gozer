@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.action.button.generic;
 
+import com.swordlord.gozer.session.SecuredWebSession;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
@@ -38,7 +39,6 @@ import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.jalapeno.datarow.DataRowBase;
 import com.swordlord.repository.reports.GenericReportFrameExtension;
-import com.swordlord.sobf.wicket.security.SecuredWebSession;
 import com.swordlord.sobf.wicket.ui.page.SimplePage;
 
 /**
