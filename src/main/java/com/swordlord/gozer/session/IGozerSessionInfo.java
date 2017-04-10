@@ -39,8 +39,7 @@ public interface IGozerSessionInfo
 	boolean isPermitted(String strPermissionIdentifier);
 	
 	boolean isAuthenticated();
-	boolean isSSOAuthenticated();
-	
+
 	UUID getMountPoint();
 	void setMountPoint(UUID uuid);
 
