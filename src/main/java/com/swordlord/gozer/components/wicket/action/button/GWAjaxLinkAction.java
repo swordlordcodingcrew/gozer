@@ -25,7 +25,10 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.action.button;
 
+import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.commons.lang.NotImplementedException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Logger;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -36,14 +39,11 @@ import com.swordlord.gozer.components.generic.action.IGozerAction;
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.gozer.session.IGozerSessionInfo;
-import com.swordlord.repository.datarow.Assessment.AssessmentDataRowKey;
-
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 @SuppressWarnings("serial")
 public abstract class GWAjaxLinkAction extends Panel implements IGozerAction
 {
-	protected static final Log LOG = LogFactory.getLog(REPLACEME);
+	protected static final Log LOG = LogFactory.getLog(GWAjaxLinkAction.class);
 
 	protected GozerController _gc;
 	protected DataBinding _binding;
@@ -74,12 +74,6 @@ public abstract class GWAjaxLinkAction extends Panel implements IGozerAction
 		_link.add(_image);
 
 		add(_link);
-	}
-
-	public AssessmentDataRowKey getCurrentAssessment()
-	{
-		IGozerSessionInfo session = getGozerSession();
-		return session.getCurrentAssessment();
 	}
 
 	@Override

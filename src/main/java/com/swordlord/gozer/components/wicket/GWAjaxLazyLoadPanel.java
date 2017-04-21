@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket;
 
+import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -37,7 +38,6 @@ import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.handler.resource.ResourceReferenceRequestHandler;
 import com.swordlord.gozer.frame.GozerReportExtension;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWReportContext;
 
 /**
  * A panel where you can lazy load another panel. Usually used for reports and

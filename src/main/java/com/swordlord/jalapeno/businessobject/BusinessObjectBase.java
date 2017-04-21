@@ -19,31 +19,41 @@
 **
 **-----------------------------------------------------------------------------
 **
-** $Id: IGozerSessionInfo.java 1170 2011-10-07 16:24:10Z LordEidi $
+** $Id: LordEidi $
 **
 -----------------------------------------------------------------------------*/
-package com.swordlord.gozer.session;
 
-import java.util.Date;
-import java.util.UUID;
+package com.swordlord.jalapeno.businessobject;
 
-import com.swordlord.gozer.user.ISubject;
+import java.io.Serializable;
 
-public interface IGozerSessionInfo
+import com.swordlord.jalapeno.datacontainer.DataContainer;
+
+@SuppressWarnings("serial")
+public abstract class BusinessObjectBase implements Serializable
 {
-	ISubject getCurrentUser();
+	protected DataContainer _dc;
 
-	Date getLastLoginDate();
-	public SubjectDataRowKey getCurrentUser();
+	public BusinessObjectBase(DataContainer dc)
+	{
+		super();
+		_dc = dc;
+	}
 
-	boolean hasRole(String strRole);
-	boolean isPermitted(String strPermissionIdentifier);
-	
-	boolean isAuthenticated();
+	public DataContainer getDC()
+	{
+		return _dc;
+	}
 
-	UUID getMountPoint();
-	void setMountPoint(UUID uuid);
+	public abstract void loadDC();
 
-	UUID getSelectedMenu();
-	void setSelectedMenu(UUID uuid);
+	public void persistDC()
+	{
+		_dc.persist();
+	}
+
+	public void rollbackDC()
+	{
+		_dc.rollback();
+	}
 }

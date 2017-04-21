@@ -30,6 +30,8 @@ import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.Collection;
 
+import com.swordlord.common.i18n.ITranslator;
+import com.swordlord.common.i18n.TranslatorFactory;
 import org.apache.cayenne.map.DbAttribute;
 import org.apache.cayenne.map.ObjAttribute;
 import org.apache.cayenne.map.ObjEntity;
@@ -37,9 +39,6 @@ import com.swordlord.gozer.components.EditMode;
 import com.swordlord.gozer.components.generic.ObjectBase;
 import com.swordlord.gozer.datatypeformat.DataTypeFormat;
 import com.swordlord.jalapeno.DBConnection;
-import com.swordlord.jalapeno.ead.EADManager;
-import com.swordlord.repository.datarow.EntityAttributeDefinition.EntityAttributeDefinitionDataRow;
-import com.swordlord.sobf.common.i18n.Translator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -69,7 +68,7 @@ public class DataBindingField implements Serializable
 	protected EditMode _maxEditMode = EditMode.WRITE;
 
 	/**
-	 * @param objectBas
+	 * @param objectBase
 	 * @param db
 	 */
 	public DataBindingField(ObjectBase objectBase, DataBinding db)
@@ -94,11 +93,13 @@ public class DataBindingField implements Serializable
 		}
 		else
 		{
-            Translator tr = new Translator();
+            ITranslator tr = TranslatorFactory.getTranslator();
 			_strCaption = tr.getString("gozer.caption." + _objEntity.getDbEntityName(),  objectBase.getCaption().toLowerCase());
 		}
 		
 		// Set the Definitions from the ROWtype
+		// TODO re-add EAD Manager
+		/*
 		if (EADManager.instance().isAttributeVirtual(_strTableName, _strFieldName))
 		{
 			EntityAttributeDefinitionDataRow dataRow =  EADManager.instance().getAttributeDefinition(_strTableName, _strFieldName);
@@ -125,7 +126,7 @@ public class DataBindingField implements Serializable
 
 		} 
 		else
-		{
+		{*/
 			Collection<ObjAttribute> colAttributes = _objEntity.getAttributes();
 			for (ObjAttribute objAttribute : colAttributes)
 			{
@@ -153,7 +154,7 @@ public class DataBindingField implements Serializable
 			{
 
 			}
-		}
+		//} from fix me
 
 		// Now set the Overrides from the Gozer File
 		// objectBase.getMaxLengthOverride

@@ -26,6 +26,8 @@ package com.swordlord.gozer.eventhandler.generic;
 
 import java.io.Serializable;
 
+import com.swordlord.common.i18n.ITranslator;
+import com.swordlord.common.i18n.TranslatorFactory;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.WebPage;
 import com.swordlord.gozer.components.generic.action.GActivateAction;
@@ -47,7 +49,6 @@ import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.jalapeno.datacontainer.DataContainer;
 import com.swordlord.jalapeno.datarow.DataRowBase;
 import com.swordlord.jalapeno.dataview.DataViewBase;
-import com.swordlord.sobf.common.i18n.Translator;
 
 @SuppressWarnings("serial")
 public class GozerController implements Serializable
@@ -60,11 +61,11 @@ public class GozerController implements Serializable
 	protected WebPage _webPage;
 	protected GozerEventListenerList _gozerEventHandler;
 	
-	private Translator _translator = null;
+	private ITranslator _tr = null;
 
 	/**
 	 * Constructor of GEventControl. Per GozerFrame one GEventControl is intended.
-	 * @param dc the DataContainer for db-interaction
+	 * @param fe the Frame Extension for context
 	 */
 	public GozerController(IGozerFrameExtension fe)
 	{
@@ -174,13 +175,6 @@ public class GozerController implements Serializable
 		}
 	}
 
-
-	/**
-	 * Selects the first record of the given table
-	 * @param strTable   the table name
-	 * @param source     the originator of the action (needed for the event)
-	 * @param bFireEvent if true a gozerSelectionEvent is fired
-	 */
 	public void firstAction(DataBinding dataBinding)
 	{
 		dataBinding.moveFirst();
@@ -280,12 +274,6 @@ public class GozerController implements Serializable
 		return (_displayMode == GozerDisplayMode.WEB_MODAL) || (_displayMode == GozerDisplayMode.SWING_MODAL);
 	}
 
-	/**
-	 * Selects the last record of the given table
-	 * @param strTable the table name
-	 * @param source     the originator of the action (needed for the event)
-	 * @param bFireEvent if true a gozerSelectionEvent is fired
-	 */
 	public void lastAction(DataBinding dataBinding)
 	{
 		dataBinding.moveLast();
@@ -324,10 +312,10 @@ public class GozerController implements Serializable
 			_fe.onLoad();
 			changeState(GozerFrameStatus.SHOW);
 			
-			if (_translator == null)
-				_translator = new Translator();
+			if (_tr == null)
+				_tr = TranslatorFactory.getTranslator();
 			
-			fireGozerFeebackInfoEvent(new GozerFeedbackInfoEvent(event.getSource(), null), _translator.getString("system.message.", "dataSaved"));
+			fireGozerFeebackInfoEvent(new GozerFeedbackInfoEvent(event.getSource(), null), _tr.getString("system.message.", "dataSaved"));
 		}
 		else
 		{
@@ -336,13 +324,6 @@ public class GozerController implements Serializable
 		fireGozerUpdateUIEvent(new GozerUpdateUIEvent(event.getSource(), null));
 	}
 
-	/**
-	 * Selects the previous record of the given table.
-	 * If the first record is already selected, nothing will happen.
-	 * @param strTable   the table name
-	 * @param source     the originator of the action (needed for the event)
-	 * @param bFireEvent if true a gozerSelectionEvent is fired
-	 */
 	public void prevAction(DataBinding dataBinding)
 	{
 		dataBinding.movePrevious();

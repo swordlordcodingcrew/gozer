@@ -3,6 +3,7 @@
 ** -Gozer is not Zuul-
 **
 ** Copyright 2017 by SwordLord - the coding crew - https://www.swordlord.com/
+** and individual authors
 **
 ** This program is free software; you can redistribute it and/or modify it
 ** under the terms of the GNU Affero General Public License as published by the Free
@@ -19,31 +20,30 @@
 **
 **-----------------------------------------------------------------------------
 **
-** $Id: IGozerSessionInfo.java 1170 2011-10-07 16:24:10Z LordEidi $
+** $Id: $
 **
 -----------------------------------------------------------------------------*/
-package com.swordlord.gozer.session;
 
-import java.util.Date;
-import java.util.UUID;
+package com.swordlord.common.i18n;
 
-import com.swordlord.gozer.user.ISubject;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
-public interface IGozerSessionInfo
+/**
+ * @author LordEidi
+ *
+ */
+@SuppressWarnings("serial")
+public class TranslatorFactory
 {
-	ISubject getCurrentUser();
+	private static final Log LOG = LogFactory.getLog(TranslatorFactory.class);
 
-	Date getLastLoginDate();
-	public SubjectDataRowKey getCurrentUser();
-
-	boolean hasRole(String strRole);
-	boolean isPermitted(String strPermissionIdentifier);
-	
-	boolean isAuthenticated();
-
-	UUID getMountPoint();
-	void setMountPoint(UUID uuid);
-
-	UUID getSelectedMenu();
-	void setSelectedMenu(UUID uuid);
+	/**
+     *
+     */
+	// TODO: Implementation
+    public static ITranslator getTranslator()
+    {
+		return new Translator();
+    }
 }

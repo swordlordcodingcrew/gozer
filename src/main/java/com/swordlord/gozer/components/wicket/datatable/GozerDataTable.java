@@ -27,6 +27,7 @@ package com.swordlord.gozer.components.wicket.datatable;
 
 import java.util.List;
 
+import com.swordlord.gozer.dataprovider.GozerSortableFilterableDataProvider;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxFallbackHeadersToolbar;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxNavigationToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
@@ -105,9 +106,9 @@ public class GozerDataTable extends DataTable<DataRowBase, String>
      *            The parent panel
      */
     public GozerDataTable(String id, List<IColumn<DataRowBase, String>> columns, GozerSortableFilterableDataProvider dataProvider, int rowsPerPage,
-            IModel<?> model,
-            GList list,
-            Form<?> form, GWPanel parent)
+                          IModel<?> model,
+                          GList list,
+                          Form<?> form, GWPanel parent)
 	{
 		super(id, columns, dataProvider, rowsPerPage);
         _markCurrentRow = list.getShowCurrent();

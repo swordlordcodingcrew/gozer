@@ -25,6 +25,8 @@
 
 package com.swordlord.gozer.components.csv;
 
+import com.swordlord.common.prefs.UserPrefs;
+import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -40,9 +42,7 @@ import com.swordlord.gozer.renderer.excel.ExcelRenderer;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.gozer.util.ResourceLoader;
 import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
-import com.swordlord.sobf.common.config.UserPrefs;
 
-import com.swordlord.sobf.wicket.ui.gozerframe.GWReportContext;
 
 /**
  * 
@@ -74,7 +74,8 @@ public class GCsvReport extends GCsvObjectBase
 		{
 			_app = app;
 			_session = session;
-			
+
+			// TODO fix this
 			String strReportFile = UserPrefs.APP_REPORT_GOZER_FILES_FOLDER + report.getDefiniton();
 			
 			DefaultReportPanelExtension ext = new DefaultReportPanelExtension(session, strReportFile, gfe.getDataBindingContext());

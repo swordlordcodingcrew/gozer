@@ -30,6 +30,7 @@ import com.swordlord.sobf.wicket.main.FilterState.escapePropertyPath;
 import java.util.Date;
 import java.util.List;
 
+import com.swordlord.common.prefs.UserPrefsFactory;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.ChoiceFilter;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilterForm;
@@ -55,7 +56,6 @@ import com.swordlord.jalapeno.dataview.OrderingParam;
 import com.swordlord.jalapeno.fkey.FKeyBase;
 import com.swordlord.repository.datatable.Code.CodeDataTable;
 import com.swordlord.repository.datatable.Code.base.CodeDataTableBase;
-import com.swordlord.sobf.common.config.UserPrefs;
 
 /**
  * {@link GozerColumn} with filter support.
@@ -136,7 +136,7 @@ public class GozerFilteredColumn extends GozerColumn implements IFilteredColumn<
         if (field instanceof GCodeField)
         {
             CodeDataTable tabCode = new CodeDataTable(new DataContainer());
-            tabCode.fillByLanguageAndCodeName(UserPrefs.instance().getLanguageCode(), ((GCodeField) field).getCodeType());
+            tabCode.fillByLanguageAndCodeName(UserPrefsFactory.getUserPrefs().getLanguageCode(), ((GCodeField) field).getCodeType());
 
             OrderingParam orderingParam = new OrderingParam(CodeDataTableBase.SORT_NR_PROPERTY, true);
             List<DataRowBase> codes = tabCode.getDataRows(orderingParam);

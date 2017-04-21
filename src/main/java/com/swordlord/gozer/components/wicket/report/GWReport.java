@@ -25,6 +25,8 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.report;
 
+import com.swordlord.gozer.session.SecuredWebSession;
+import com.swordlord.gozer.ui.gozerframe.WicketGozerReportPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
@@ -34,8 +36,6 @@ import com.swordlord.gozer.components.wicket.GWAjaxLazyLoadPanel;
 import com.swordlord.gozer.databinding.DataBindingContext;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
-import com.swordlord.sobf.wicket.security.SecuredWebSession;
-import com.swordlord.sobf.wicket.ui.gozerframe.WicketGozerReportPanel;
 
 /**
  * TODO JavaDoc for GWReport.java

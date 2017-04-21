@@ -1,27 +1,26 @@
 /*-----------------------------------------------------------------------------
- **
- ** - Open Risk and Compliance (ORICO) Framework -
- **
- ** Copyright 2017 by SwordLord - the coding crew - https://www.swordlord.com/
- ** and individual authors
- **
- ** This program is free software; you can redistribute it and/or modify it
- ** under the terms of the GNU Affero General Public License as published by the Free
- ** Software Foundation, either version 3 of the License, or (at your option)
- ** any later version.
- **
- ** This program is distributed in the hope that it will be useful, but WITHOUT
- ** ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- ** FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for
- ** more details.
- **
- ** You should have received a copy of the GNU Affero General Public License along
- ** with this program. If not, see <http://www.gnu.org/licenses/>.
- **
- **-----------------------------------------------------------------------------
- **
- ** $Id: DataTableBase.java 1361 2012-04-15 11:04:14Z LordEidi $
- **
+**
+** -Gozer is not Zuul-
+**
+** Copyright 2017 by SwordLord - the coding crew - https://www.swordlord.com/
+**
+** This program is free software; you can redistribute it and/or modify it
+** under the terms of the GNU Affero General Public License as published by the Free
+** Software Foundation, either version 3 of the License, or (at your option)
+** any later version.
+**
+** This program is distributed in the hope that it will be useful, but WITHOUT
+** ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+** FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for
+** more details.
+**
+** You should have received a copy of the GNU Affero General Public License along
+** with this program. If not, see <http://www.gnu.org/licenses/>.
+**
+**-----------------------------------------------------------------------------
+**
+** $Id: LordEidi $
+**
 -----------------------------------------------------------------------------*/
 
 package com.swordlord.jalapeno.datatable;
@@ -33,6 +32,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import com.swordlord.gozer.security.Roles;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.map.ObjAttribute;
 import org.apache.cayenne.map.ObjEntity;
@@ -44,7 +44,6 @@ import com.swordlord.jalapeno.datatable.event.DataTableEventDispatcher;
 import com.swordlord.jalapeno.dataview.OrderingParam;
 import com.swordlord.jalapeno.dataview.ViewFilter;
 import com.swordlord.jalapeno.fkey.FKeyBase;
-import com.swordlord.sobf.wicket.security.Roles;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

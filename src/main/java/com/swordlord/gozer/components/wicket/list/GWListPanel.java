@@ -29,6 +29,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.swordlord.gozer.dataprovider.GozerSortableFilterableDataProvider;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractToolbar;
@@ -65,7 +66,6 @@ import com.swordlord.gozer.eventhandler.generic.GozerSelectionEvent;
 import com.swordlord.gozer.eventhandler.generic.GozerUpdateUIEvent;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.jalapeno.datarow.DataRowBase;
-import com.swordlord.sobf.wicket.main.GozerSortableFilterableDataProvider;
 
 @SuppressWarnings("serial")
 public class GWListPanel extends GWPanel

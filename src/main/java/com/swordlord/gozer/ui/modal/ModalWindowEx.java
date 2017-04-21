@@ -25,12 +25,13 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.ui.modal;
 
+import com.swordlord.common.i18n.ITranslator;
+import com.swordlord.common.i18n.TranslatorFactory;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.jalapeno.datarow.DataRowBase;
-import com.swordlord.sobf.common.i18n.Translator;
 
 /**
  * TODO JavaDoc for ModalWindowEx.java
@@ -56,8 +57,8 @@ public class ModalWindowEx extends ModalWindow
 		
 		_dataBinding = dataBinding;
 		
-		final Translator translator = new Translator();
-    	final String strWarning = translator.getString(ModalWindowEx.class.getName(), "close_not_working");
+		final ITranslator tr = TranslatorFactory.getTranslator();
+    	final String strWarning = tr.getString(ModalWindowEx.class.getName(), "close_not_working");
 
     	super.setCloseButtonCallback(new ModalWindow.CloseButtonCallback()
 	    {
@@ -102,7 +103,6 @@ public class ModalWindowEx extends ModalWindow
 		super.close(target);
 	}
 	
-	@Override
 	public void show(final AjaxRequestTarget target)
 	{
 		super.show(target);
@@ -131,15 +131,6 @@ public class ModalWindowEx extends ModalWindow
 	public String getContentId()
 	{
 		return "modal_panel";
-	}
-
-    /**
-     * @return the name of the current assessment as chosen within the session
-     */
-	public String getCurrentAssessmentName()
-	{
-		IGozerSessionInfo session = getGozerSession();
-		return session.getCurrentAssessmentName();
 	}
 
     /**

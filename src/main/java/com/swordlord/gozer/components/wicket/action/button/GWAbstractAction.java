@@ -28,6 +28,8 @@ package com.swordlord.gozer.components.wicket.action.button;
 import java.io.InputStream;
 import java.text.MessageFormat;
 
+import com.swordlord.common.i18n.ITranslator;
+import com.swordlord.common.i18n.TranslatorFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.markup.html.form.ImageButton;
@@ -63,7 +65,7 @@ public abstract class GWAbstractAction extends ImageButton implements IGozerActi
 
     protected GozerController _gc;
     protected GActionBase _actionBase;
-    private Translator _translator;
+    private ITranslator _tr;
 
     /**
      * @param id
@@ -127,14 +129,14 @@ public abstract class GWAbstractAction extends ImageButton implements IGozerActi
         // remain on this page, hence do not set response page
     }
 
-    protected Translator getTranslator()
+    protected ITranslator getTranslator()
     {
-        if (_translator == null)
+        if (_tr == null)
         {
-            _translator = new Translator();
+            _tr = TranslatorFactory.getTranslator();
         }
 
-        return _translator;
+        return _tr;
     }
     
     protected String getTranslationName()

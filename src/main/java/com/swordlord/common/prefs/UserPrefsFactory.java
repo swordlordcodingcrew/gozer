@@ -3,6 +3,7 @@
 ** -Gozer is not Zuul-
 **
 ** Copyright 2017 by SwordLord - the coding crew - https://www.swordlord.com/
+** and individual authors
 **
 ** This program is free software; you can redistribute it and/or modify it
 ** under the terms of the GNU Affero General Public License as published by the Free
@@ -19,31 +20,37 @@
 **
 **-----------------------------------------------------------------------------
 **
-** $Id: IGozerSessionInfo.java 1170 2011-10-07 16:24:10Z LordEidi $
+** $Id: $
 **
 -----------------------------------------------------------------------------*/
-package com.swordlord.gozer.session;
 
-import java.util.Date;
-import java.util.UUID;
+package com.swordlord.common.prefs;
 
-import com.swordlord.gozer.user.ISubject;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
-public interface IGozerSessionInfo
+/**
+ * @author LordEidi
+ *
+ */
+@SuppressWarnings("serial")
+public class UserPrefsFactory
 {
-	ISubject getCurrentUser();
+	private static final Log LOG = LogFactory.getLog(UserPrefsFactory.class);
 
-	Date getLastLoginDate();
-	public SubjectDataRowKey getCurrentUser();
+    private static UserPrefs _userPref_instance;
 
-	boolean hasRole(String strRole);
-	boolean isPermitted(String strPermissionIdentifier);
-	
-	boolean isAuthenticated();
+	/**
+     *
+     */
+	// TODO: Implementation
+    public static IUserPrefs getUserPrefs()
+    {
+        if (_userPref_instance == null)
+        {
+            _userPref_instance = new UserPrefs("orico");
+        }
 
-	UUID getMountPoint();
-	void setMountPoint(UUID uuid);
-
-	UUID getSelectedMenu();
-	void setSelectedMenu(UUID uuid);
+        return _userPref_instance;
+    }
 }

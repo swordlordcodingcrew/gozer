@@ -27,7 +27,10 @@ package com.swordlord.gozer.components.wicket.detail;
 
 import java.text.MessageFormat;
 
-import org.apache.log4j.Logger;
+import com.swordlord.gozer.ui.gozerframe.GWContext;
+import com.swordlord.gozer.ui.gozerframe.GozerModalWindow;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -50,9 +53,6 @@ import com.swordlord.jalapeno.datatable.DataTableBase;
 import com.swordlord.jalapeno.dataview.DataViewBase;
 import com.swordlord.jalapeno.fkey.FKeyBase;
 
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
-import com.swordlord.sobf.wicket.ui.gozerframe.GozerModalWindow;
-
 /**
  * TODO JavaDoc for GWDetailFKeyFieldPanel.java
  * 
@@ -67,7 +67,7 @@ public class GWDetailFKeyFieldPanel extends GWPanel
 	private GozerModalWindow _fkey;
 	private DataViewBase _dv;
 	
-	protected static final Log LOG = LogFactory.getLog(REPLACEME);
+	protected static final Log LOG = LogFactory.getLog(GWDetailFKeyFieldPanel.class);
 
     /**
      * @param id

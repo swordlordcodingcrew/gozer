@@ -27,7 +27,9 @@ package com.swordlord.gozer.components.wicket;
 
 import java.util.List;
 
-import com.swordlord.jalapeno.DBGenerator;
+import com.swordlord.gozer.ui.gozerframe.GWContext;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.ImageButton;
@@ -73,8 +75,6 @@ import com.swordlord.gozer.components.wicket.action.button.modal.GWModalOKButton
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
-
 
 /**
  * TODO JavaDoc for ActionBaseListView.java
@@ -85,7 +85,7 @@ import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 @SuppressWarnings("serial")
 public class ActionBaseListView extends ListView<GActionBase>
 {
-    protected static final Logger LOG = LoggerFactory.getLogger(ActionBaseListView.class);
+    protected static final Log LOG = LogFactory.getLog(ActionBaseListView.class);
 
     private static final String ACTION_WICKET_ID = "action";
     private static final String ACTION_PANEL_WICKET_ID = "action_panel";

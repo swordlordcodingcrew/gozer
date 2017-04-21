@@ -27,17 +27,17 @@ package com.swordlord.jalapeno.tablemodel;
 
 import javax.swing.table.AbstractTableModel;
 
+import com.swordlord.common.i18n.ITranslator;
+import com.swordlord.common.i18n.TranslatorFactory;
 import org.apache.cayenne.map.Attribute;
 import org.apache.cayenne.map.DbAttribute;
 import org.apache.cayenne.map.Entity;
-import com.swordlord.sobf.common.i18n.Translator;
-import com.swordlord.sobf.swing.Controller;
 
 @SuppressWarnings("serial")
 public class DataMapDiagramTableModel extends AbstractTableModel
 {
 	private Entity _entity;
-	private Translator _ls = Controller.instance().getTranslator();
+	private ITranslator _tr = TranslatorFactory.getTranslator();
 	
 	public DataMapDiagramTableModel(Entity entity)
 	{
@@ -64,11 +64,11 @@ public class DataMapDiagramTableModel extends AbstractTableModel
 		switch (column)
 		{
 			case 0:
-				return _ls.getString("PK", ObjEntityTableModel.class);
+				return _tr.getString("PK", ObjEntityTableModel.class);
 			case 1:
-				return _ls.getString("Field", ObjEntityTableModel.class);
+				return _tr.getString("Field", ObjEntityTableModel.class);
 			default:
-				throw new Error(_ls.getString("column_out_of_range", ObjEntityTableModel.class));
+				throw new Error(_tr.getString("column_out_of_range", ObjEntityTableModel.class));
 		}
 	} 
 
@@ -81,7 +81,7 @@ public class DataMapDiagramTableModel extends AbstractTableModel
 	{
 		if(rowIndex < 0 | rowIndex > getRowCount())
 		{
-			throw new Error(_ls.getString("column_out_of_range", ObjEntityTableModel.class));
+			throw new Error(_tr.getString("column_out_of_range", ObjEntityTableModel.class));
 		}
 		
 		Attribute attribute = (Attribute) _entity.getAttributes().toArray()[rowIndex];
