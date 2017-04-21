@@ -26,6 +26,7 @@
 package com.swordlord.gozer.components.fop;
 
 import com.swordlord.common.prefs.UserPrefs;
+import com.swordlord.gozer.frame.DefaultReportPanelExtension;
 import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.wicket.Application;
 import org.jdom2.Document;
@@ -38,7 +39,6 @@ import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.renderer.fop.FopRenderer;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.gozer.util.ResourceLoader;
-import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
 
 /**
  * 

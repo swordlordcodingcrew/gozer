@@ -1,9 +1,8 @@
 /*-----------------------------------------------------------------------------
  **
- ** - Open Risk and Compliance (ORICO) Framework -
+ ** -Gozer is not Zuul-
  **
  ** Copyright 2017 by SwordLord - the coding crew - https://www.swordlord.com/
- ** and individual authors
  **
  ** This program is free software; you can redistribute it and/or modify it
  ** under the terms of the GNU Affero General Public License as published by the Free
@@ -20,7 +19,7 @@
  **
  **-----------------------------------------------------------------------------
  **
- ** $Id: ObjEntityTableModel.java 1363 2012-10-19 15:22:22Z LordEidi $
+ ** $Id:  $
  **
 -----------------------------------------------------------------------------*/
 

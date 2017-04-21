@@ -30,6 +30,7 @@ import java.text.MessageFormat;
 
 import com.swordlord.common.i18n.ITranslator;
 import com.swordlord.common.i18n.TranslatorFactory;
+import com.swordlord.gozer.file.GozerFileLoader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.markup.html.form.ImageButton;
@@ -47,8 +48,6 @@ import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.gozer.util.ResourceLoader;
-import com.swordlord.sobf.common.i18n.Translator;
-import com.swordlord.sobf.common.jcr.JcrHelper;
 
 
 /**
@@ -165,11 +164,7 @@ public abstract class GWAbstractAction extends ImageButton implements IGozerActi
 
             // Search the gozer configuration file first in the JCR Repository
             // then on the file system.
-            InputStream inputStream = JcrHelper.instance().getGozerLayout(layoutFileName);
-            if (inputStream == null)
-            {
-                inputStream = ResourceLoader.loadResource(getApplication(), layoutFileName, getClass());
-            }
+            InputStream inputStream = GozerFileLoader.getGozerLayout(getApplication(), layoutFileName);
 
             SAXBuilder sb = new SAXBuilder();
             Document document = sb.build(inputStream);

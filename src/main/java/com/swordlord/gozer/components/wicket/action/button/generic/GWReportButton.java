@@ -38,9 +38,6 @@ import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.jalapeno.datarow.DataRowBase;
-import com.swordlord.repository.reports.GenericReportFrameExtension;
-import com.swordlord.sobf.wicket.ui.page.SimplePage;
-
 /**
  * Button action to display Reports on a new window
  * 

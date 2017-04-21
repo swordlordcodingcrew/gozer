@@ -66,6 +66,8 @@ public class FilterState implements Serializable, Map<String, Object>
 
             final String key = unescapePropertyPath(e.getKey());
 
+            // TODO add code tables later
+            /*
             // the type is taken from the model object
             if (value instanceof CodeDataRow)
             {
@@ -80,7 +82,9 @@ public class FilterState implements Serializable, Map<String, Object>
                     b.eq(key, code);
                 }
             }
-            else if (value instanceof Date)
+            else
+             */
+            if (value instanceof Date)
             {
                 b.eq(key, value);
             }
