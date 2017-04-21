@@ -395,7 +395,9 @@ public class DataRowBase extends CayenneDataObject
 						// Switch ObjectContext before setting relation
 						// problem is that different rows exist in different
 						// contexts (different gozer frames)
-						DataRowBase row = (DataRowBase) getObjectContext().localObject(targetRow.getObjectId(), targetRow);
+                        //DataRowBase row = (DataRowBase) getObjectContext().localObject( targetRow.getObjectId(), targetRow);
+
+						DataRowBase row = (DataRowBase) getObjectContext().localObject(targetRow);
 
 						// set the relation
 						if (relation.isToMany())

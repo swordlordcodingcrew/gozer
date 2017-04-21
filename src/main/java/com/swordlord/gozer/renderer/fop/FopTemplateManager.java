@@ -29,11 +29,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Hashtable;
 
+import com.swordlord.gozer.file.GozerFileLoader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.swordlord.gozer.components.fop.GFopFrame;
 import com.swordlord.gozer.components.fop.GFopList;
 import com.swordlord.gozer.components.fop.GFopReportPanel;
+import org.apache.wicket.Application;
 
 
 /**
@@ -69,27 +71,25 @@ public class FopTemplateManager
 	{
 		_htTemplates = new Hashtable<String, String>();
 		
-		JcrHelper jcrH = JcrHelper.instance();
-		
-		loadTemplate(jcrH, GFopFrame.TEMPLATE_NAME, PATH_PREFIX + GFopFrame.TEMPLATE_NAME + FILE_POSTFIX);
-		loadTemplate(jcrH, GFopReportPanel.TEMPLATE_NAME, PATH_PREFIX + GFopReportPanel.TEMPLATE_NAME + FILE_POSTFIX);
+		loadTemplate(GFopFrame.TEMPLATE_NAME, PATH_PREFIX + GFopFrame.TEMPLATE_NAME + FILE_POSTFIX);
+		loadTemplate(GFopReportPanel.TEMPLATE_NAME, PATH_PREFIX + GFopReportPanel.TEMPLATE_NAME + FILE_POSTFIX);
 		
 		// not used yet
 		// loadTemplate(jcrH, GFopDetail.TEMPLATE_NAME, PATH_PREFIX + GFopDetail.TEMPLATE_NAME + FILE_POSTFIX);
 		
-		loadTemplate(jcrH, GFopList.TEMPLATE_TABLE_NAME, PATH_PREFIX + GFopList.TEMPLATE_TABLE_NAME + FILE_POSTFIX);
-		loadTemplate(jcrH, GFopList.TEMPLATE_COLUMN_NAME, PATH_PREFIX + GFopList.TEMPLATE_COLUMN_NAME + FILE_POSTFIX);
-		loadTemplate(jcrH, GFopList.TEMPLATE_COLUMN_CELL_NAME, PATH_PREFIX + GFopList.TEMPLATE_COLUMN_CELL_NAME + FILE_POSTFIX);
-		loadTemplate(jcrH, GFopList.TEMPLATE_ROW_NAME, PATH_PREFIX + GFopList.TEMPLATE_ROW_NAME + FILE_POSTFIX);
-		loadTemplate(jcrH, GFopList.TEMPLATE_ROW_CELL_NAME, PATH_PREFIX + GFopList.TEMPLATE_ROW_CELL_NAME + FILE_POSTFIX);
+		loadTemplate(GFopList.TEMPLATE_TABLE_NAME, PATH_PREFIX + GFopList.TEMPLATE_TABLE_NAME + FILE_POSTFIX);
+		loadTemplate(GFopList.TEMPLATE_COLUMN_NAME, PATH_PREFIX + GFopList.TEMPLATE_COLUMN_NAME + FILE_POSTFIX);
+		loadTemplate(GFopList.TEMPLATE_COLUMN_CELL_NAME, PATH_PREFIX + GFopList.TEMPLATE_COLUMN_CELL_NAME + FILE_POSTFIX);
+		loadTemplate(GFopList.TEMPLATE_ROW_NAME, PATH_PREFIX + GFopList.TEMPLATE_ROW_NAME + FILE_POSTFIX);
+		loadTemplate(GFopList.TEMPLATE_ROW_CELL_NAME, PATH_PREFIX + GFopList.TEMPLATE_ROW_CELL_NAME + FILE_POSTFIX);
 	}
 	
-	private void loadTemplate(JcrHelper jcrH, String strKey, String strFilePath)
+	private void loadTemplate(String strKey, String strFilePath)
 	{
-		InputStream isFrame = jcrH.getFile(strFilePath);
+		InputStream isFrame = GozerFileLoader.getGozerLayout(Application.get(), strFilePath);
 		if(isFrame != null)
 		{
-			String strFileContent = jcrH.convertInputStreamToString(isFrame);
+			String strFileContent = GozerFileLoader.convertInputStreamToString(isFrame);
 			
 			try 
 			{

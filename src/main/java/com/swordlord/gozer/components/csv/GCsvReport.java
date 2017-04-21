@@ -26,6 +26,7 @@
 package com.swordlord.gozer.components.csv;
 
 import com.swordlord.common.prefs.UserPrefs;
+import com.swordlord.gozer.frame.DefaultReportPanelExtension;
 import com.swordlord.gozer.ui.gozerframe.GWReportContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -41,8 +42,6 @@ import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.renderer.excel.ExcelRenderer;
 import com.swordlord.gozer.session.IGozerSessionInfo;
 import com.swordlord.gozer.util.ResourceLoader;
-import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
-
 
 /**
  * 

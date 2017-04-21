@@ -47,7 +47,6 @@ import com.swordlord.gozer.eventhandler.generic.GozerActionEvent;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.session.IGozerSessionInfo;
-import com.swordlord.gozer.util.ResourceLoader;
 
 
 /**

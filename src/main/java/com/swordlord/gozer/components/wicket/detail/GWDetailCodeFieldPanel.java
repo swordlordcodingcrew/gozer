@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.detail;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.swordlord.common.prefs.UserPrefsFactory;
@@ -40,11 +41,6 @@ import com.swordlord.gozer.databinding.DataBindingModel;
 import com.swordlord.gozer.eventhandler.generic.GozerFrameStatus;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.renderer.wicket.CodeChoiceRenderer;
-import com.swordlord.jalapeno.datacontainer.DataContainer;
-import com.swordlord.jalapeno.datarow.DataRowBase;
-import com.swordlord.jalapeno.dataview.OrderingParam;
-import com.swordlord.repository.datatable.Code.CodeDataTable;
-import com.swordlord.repository.datatable.Code.base.CodeDataTableBase;
 
 @SuppressWarnings("serial")
 public class GWDetailCodeFieldPanel extends GWPanel
@@ -69,11 +65,16 @@ public class GWDetailCodeFieldPanel extends GWPanel
 
 		final DataBindingModel dropDownModel = new DataBindingModel(dataBinding);
 
+		// TODO re-add code handling
+		/*
 		CodeDataTable tabCode = new CodeDataTable(new DataContainer());
 		tabCode.fillByLanguageAndCodeName(UserPrefsFactory.getUserPrefs().getLanguageCode(), fieldForm.getCodeType());
 
         OrderingParam orderingParam = new OrderingParam(CodeDataTableBase.SORT_NR_PROPERTY, true, false);
         List<DataRowBase> codes = tabCode.getDataRows(orderingParam);
+        */
+
+        List<String> codes =  Arrays.asList("not", "implemented", "yet");
 
 		_dropdownBox = new DropDownChoice("dropdownBox", dropDownModel, codes, new CodeChoiceRenderer(field));
 		add(_dropdownBox);

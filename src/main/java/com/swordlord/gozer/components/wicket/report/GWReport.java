@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.report;
 
+import com.swordlord.gozer.frame.DefaultReportPanelExtension;
 import com.swordlord.gozer.session.SecuredWebSession;
 import com.swordlord.gozer.ui.gozerframe.WicketGozerReportPanel;
 import org.apache.wicket.Component;
@@ -35,7 +36,6 @@ import com.swordlord.gozer.components.generic.report.GReport;
 import com.swordlord.gozer.components.wicket.GWAjaxLazyLoadPanel;
 import com.swordlord.gozer.databinding.DataBindingContext;
 import com.swordlord.gozer.session.IGozerSessionInfo;
-import com.swordlord.repository.gozerframe.common.DefaultReportPanelExtension;
 
 /**
  * TODO JavaDoc for GWReport.java
@@ -54,7 +54,7 @@ public class GWReport extends GWAjaxLazyLoadPanel
 	{		
 		IGozerSessionInfo sessionInfo = (SecuredWebSession) getSession();
 				 
-		DefaultReportPanelExtension gre = new DefaultReportPanelExtension(sessionInfo, _gReport.getAttribute(GReport.ATTRIBUTE_DEFINITION), _parentContext);
+		DefaultReportPanelExtension  gre = new DefaultReportPanelExtension(sessionInfo, _gReport.getAttribute(GReport.ATTRIBUTE_DEFINITION), _parentContext);
 		WicketGozerReportPanel wicketGozerReportPanel = new WicketGozerReportPanel(id, gre);
 		
 		return wicketGozerReportPanel;

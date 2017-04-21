@@ -28,7 +28,9 @@ package com.swordlord.gozer.renderer.wicket;
 
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import com.swordlord.gozer.databinding.DataBindingField;
-import com.swordlord.repository.datarow.Code.CodeDataRow;
+import org.apache.wicket.model.IModel;
+
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class CodeChoiceRenderer implements IChoiceRenderer<Object>
@@ -45,6 +47,10 @@ public class CodeChoiceRenderer implements IChoiceRenderer<Object>
 	 */
 	public Object getDisplayValue(Object object)
 	{
+		return null;
+
+		// TODO re-add code table
+        /*
         // I don't know if it can be anything other...??
         if (object instanceof CodeDataRow)
         {
@@ -55,6 +61,7 @@ public class CodeChoiceRenderer implements IChoiceRenderer<Object>
         {
         	return null;
         }
+        */
     }
 
     /* (non-Javadoc)
@@ -62,6 +69,10 @@ public class CodeChoiceRenderer implements IChoiceRenderer<Object>
      */
     public String getIdValue(Object key, int index)
     {
+        return key.toString();
+
+        // TODO re-add code table
+        /*
     	// the type is taken from the model object
         if (key instanceof CodeDataRow)
         {
@@ -81,5 +92,11 @@ public class CodeChoiceRenderer implements IChoiceRenderer<Object>
         {
         	return key.toString();
         }
+        */
+    }
+
+    @Override
+    public Object getObject(String s, IModel<? extends List<?>> iModel) {
+        return null;
     }
 }

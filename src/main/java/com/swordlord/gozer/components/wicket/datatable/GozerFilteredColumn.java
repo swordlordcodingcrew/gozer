@@ -25,12 +25,11 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.datatable;
 
-import com.swordlord.sobf.wicket.main.FilterState.escapePropertyPath;
-
 import java.util.Date;
 import java.util.List;
 
 import com.swordlord.common.prefs.UserPrefsFactory;
+import com.swordlord.gozer.dataprovider.FilterState;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.ChoiceFilter;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilterForm;
@@ -54,8 +53,6 @@ import com.swordlord.jalapeno.datatable.DataTableBase;
 import com.swordlord.jalapeno.dataview.DataViewBase;
 import com.swordlord.jalapeno.dataview.OrderingParam;
 import com.swordlord.jalapeno.fkey.FKeyBase;
-import com.swordlord.repository.datatable.Code.CodeDataTable;
-import com.swordlord.repository.datatable.Code.base.CodeDataTableBase;
 
 /**
  * {@link GozerColumn} with filter support.
@@ -75,7 +72,7 @@ public class GozerFilteredColumn extends GozerColumn implements IFilteredColumn<
      */
 	public GozerFilteredColumn(IModel<String> displayModel, String sortProperty, Boolean bIsFirstRow, ObjectBase obField) 
 	{
-        super(displayModel, escapePropertyPath(sortProperty), bIsFirstRow);
+        super(displayModel, FilterState.escapePropertyPath(sortProperty), bIsFirstRow);
 		
 		initialise(obField);
 	}
@@ -133,6 +130,9 @@ public class GozerFilteredColumn extends GozerColumn implements IFilteredColumn<
         }
         final DataBinding binding = field.getDataBinding();
         final DataBindingField bindingField = binding.getDataBindingField();
+
+        // TODO re-add code field handling
+        /*
         if (field instanceof GCodeField)
         {
             CodeDataTable tabCode = new CodeDataTable(new DataContainer());
@@ -147,6 +147,7 @@ public class GozerFilteredColumn extends GozerColumn implements IFilteredColumn<
             aChoiceFilter.getChoice().setNullValid(true);
             return aChoiceFilter;
         }
+        */
         if (Date.class.equals(bindingField.getFieldType()))
         {
             return new DateFilter(componentId, this.<Date> getFilterModel(form, Date.class), form, true);
@@ -196,7 +197,7 @@ public class GozerFilteredColumn extends GozerColumn implements IFilteredColumn<
         {
             return null;
         }
-        return new PropertyModel<T>(form.getDefaultModel(), escapePropertyPath(path.getRelativePathWithField()));
+        return new PropertyModel<T>(form.getDefaultModel(), FilterState.escapePropertyPath(path.getRelativePathWithField()));
     }
 
     /**

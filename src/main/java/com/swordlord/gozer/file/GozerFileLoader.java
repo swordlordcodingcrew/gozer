@@ -30,8 +30,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.Application;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * TODO JavaDoc for GozerFileLoader.java
@@ -60,5 +59,46 @@ public class GozerFileLoader
         }
 
         return instrGozerFile;
+    }
+
+    public static String convertInputStreamToString(InputStream is)
+    {
+        String strReturn = "";
+
+        if (is != null)
+        {
+            Writer writer = new StringWriter();
+
+            char[] buffer = new char[1024];
+            try
+            {
+                Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+
+                int n;
+                while ((n = reader.read(buffer)) != -1)
+                {
+                    writer.write(buffer, 0, n);
+                }
+
+                reader.close();
+                strReturn = writer.toString();
+                writer.close();
+            }
+            catch (UnsupportedEncodingException e)
+            {
+                e.printStackTrace();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            finally
+            {
+
+            }
+        }
+
+
+        return strReturn;
     }
 }

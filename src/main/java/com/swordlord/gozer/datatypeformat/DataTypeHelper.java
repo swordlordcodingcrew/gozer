@@ -38,6 +38,8 @@ import org.apache.commons.lang.ClassUtils;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 
 /**
@@ -55,7 +57,7 @@ public class DataTypeHelper
 	 */
 	public static Object fromDataType(Class<?> untypedValueClass, Object typedValue)
 	{
-		Logger LOG = LoggerFactory.getLogger(DataTypeHelper.class);
+		Log LOG = LogFactory.getLog(DataTypeHelper.class);
 
 		if (typedValue == null)
 		{

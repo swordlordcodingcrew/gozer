@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.action.button.generic;
 
+import com.swordlord.gozer.ui.icons.Icons;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
