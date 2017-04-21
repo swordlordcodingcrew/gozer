@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.box;
 
+import com.swordlord.gozer.components.wicket.form.SecureForm;
 import com.swordlord.gozer.ui.gozerframe.GWContext;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;

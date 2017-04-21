@@ -29,6 +29,7 @@ import java.util.UUID;
 
 import javax.swing.ImageIcon;
 
+import com.swordlord.gozer.components.wicket.page.RootPage;
 import org.apache.wicket.Page;
 import com.swordlord.gozer.components.generic.action.IGozerAction;
 import com.swordlord.gozer.databinding.DataBinding;
@@ -40,7 +41,6 @@ import com.swordlord.jalapeno.datacontainer.DataContainer;
 import com.swordlord.jalapeno.datarow.DataRowBase;
 import com.swordlord.jalapeno.datarow.DataRowKeyBase;
 import com.swordlord.jalapeno.businessobject.BusinessObjectBase;
-import com.swordlord.sobf.wicket.ui.page.RootPage;
 
 public interface IGozerFrameExtension
 {

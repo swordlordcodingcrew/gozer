@@ -25,6 +25,7 @@
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.action.button.generic;
 
+import com.swordlord.gozer.components.wicket.page.GozerPage;
 import com.swordlord.gozer.session.SecuredWebSession;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.model.Model;
@@ -123,7 +124,7 @@ public class GWReportButton extends GWAbstractAction
             LOG.error(e.getCause());
         }
       
-        SimplePage page = SimplePage.getFrame(gfe);
+        GozerPage page = GozerPage.getFrame(gfe);
 
         if (page != null)
         {

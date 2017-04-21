@@ -31,8 +31,10 @@ import java.util.Map.Entry;
 import java.util.UUID;
 
 import com.swordlord.common.prefs.UserPrefs;
+import com.swordlord.common.prefs.UserPrefsFactory;
 import com.swordlord.gozer.components.generic.ObjectBase;
 import com.swordlord.gozer.components.generic.report.*;
+import com.swordlord.gozer.components.wicket.page.RootPage;
 import com.swordlord.gozer.databinding.DataBindingContext;
 import com.swordlord.gozer.databinding.DataBindingMember;
 import com.swordlord.gozer.eventhandler.generic.GozerActionEvent;
@@ -267,7 +269,7 @@ public class DefaultReportPanelExtension extends GozerReportPanelExtensionBase
         }
         else if ("language_code".equals(ident))
         {
-            resolvedParams.put(ident, UserPrefs.instance().getLanguageCode());
+            resolvedParams.put(ident, UserPrefsFactory.getUserPrefs().getLanguageCode());
         }
         else if ("foreign_key".equals(ident))
         {

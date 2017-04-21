@@ -32,6 +32,7 @@ import javax.swing.ImageIcon;
 
 import com.swordlord.common.i18n.Translator;
 import com.swordlord.gozer.components.generic.action.IGozerAction;
+import com.swordlord.gozer.components.wicket.page.RootPage;
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.databinding.DataBindingMember;
 import com.swordlord.gozer.databinding.FrameDataBindingContext;

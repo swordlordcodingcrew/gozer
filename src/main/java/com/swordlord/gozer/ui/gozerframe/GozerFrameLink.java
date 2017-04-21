@@ -28,12 +28,12 @@ package com.swordlord.gozer.ui.gozerframe;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import com.swordlord.gozer.components.wicket.page.GozerPage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.markup.html.link.Link;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.session.IGozerSessionInfo;
-import com.swordlord.sobf.wicket.ui.page.GozerPage;
 
 @SuppressWarnings("serial")
 public class GozerFrameLink extends Link<Object>
@@ -71,7 +71,7 @@ public class GozerFrameLink extends Link<Object>
 	}
 
 	/**
-	 * @param _gfe the _gfe to set
+	 * @param
 	 */
 	public void setGozerFrameExtension(Class<? extends IGozerFrameExtension> gfe) 
 	{
