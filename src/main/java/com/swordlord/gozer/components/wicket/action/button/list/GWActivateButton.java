@@ -28,15 +28,13 @@ package com.swordlord.gozer.components.wicket.action.button.list;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
-import com.swordlord.common.ui.icons.Icons;
+import com.swordlord.gozer.ui.icons.Icons;
 import com.swordlord.gozer.components.generic.action.GActionBase;
 import com.swordlord.gozer.components.generic.action.GActivateAction;
 import com.swordlord.gozer.components.wicket.action.button.GWAbstractAction;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.jalapeno.datarow.DataRowKeyBase;
-import com.swordlord.repository.datarow.Assessment.AssessmentDataRowKey;
 
 /**
  * TODO JavaDoc for GWActivateButton.java
@@ -80,26 +78,6 @@ public class GWActivateButton extends GWAbstractAction
 	public void onBeforeRender()
 	{
 		 super.onBeforeRender();
-
-		 AssessmentDataRowKey keyCurrentAssessment = getCurrentAssessment();
-
-		 if((keyCurrentAssessment != null) && (keyCurrentAssessment.toString().compareTo(_key.toString()) == 0))
-		 {
-            PageParameters pp = new PageParameters();
-            pp.add("id", Icons.ICON_LIGHTBULB);
-            setImageResourceReference(new PackageResourceReference("img"), pp);
-
-			 setEnabled(true);
-		 }
-		 else
-		 {
-            PageParameters pp = new PageParameters();
-            pp.add("id", Icons.ICON_LIGHTBULB_OFF);
-
-            setImageResourceReference(new PackageResourceReference("img"), pp);
-
-			 setEnabled(true);
-		 }
 	}
 
 	@Override

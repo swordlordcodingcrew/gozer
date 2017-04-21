@@ -27,18 +27,10 @@ package com.swordlord.gozer.session;
 import java.util.Date;
 import java.util.UUID;
 
-import com.swordlord.repository.datarow.Assessment.AssessmentDataRowKey;
 import com.swordlord.repository.datarow.Subject.SubjectDataRowKey;
 
 public interface IGozerSessionInfo
 {
-	public void setCurrentAssessment(AssessmentDataRowKey key);
-	
-	public AssessmentDataRowKey getCurrentAssessment();
-	public int getCurrentAssessmentStatus();
-	public UUID getCurrentAssessmentType();
-	public String getCurrentAssessmentName();
-
 	public SubjectDataRowKey getCurrentUser();
 
 	public Date getLastLoginDate();

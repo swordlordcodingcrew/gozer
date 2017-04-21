@@ -27,7 +27,7 @@ package com.swordlord.gozer.components.wicket.action.button.modal;
 
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
-import com.swordlord.common.ui.icons.Icons;
+import com.swordlord.gozer.ui.icons.Icons;
 import com.swordlord.gozer.components.generic.action.GCancelAction;
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.eventhandler.generic.GozerController;

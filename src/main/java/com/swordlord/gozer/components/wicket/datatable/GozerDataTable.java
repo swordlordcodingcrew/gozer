@@ -46,8 +46,6 @@ import com.swordlord.gozer.components.wicket.action.button.list.GWListFilterTool
 import com.swordlord.gozer.components.wicket.list.GWListPanel;
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.jalapeno.datarow.DataRowBase;
-import com.swordlord.sobf.wicket.main.GozerSortableFilterableDataProvider;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
 
 /**
  * Gozer version of a {@link DataTable}.<br>
@@ -98,7 +96,7 @@ public class GozerDataTable extends DataTable<DataRowBase, String>
      * @param rowsPerPage
      *            The number of rows to show per page
      * @param model
-     *            Model wrapping the {@link GWContext} to use
+     *            Model wrapping the {@link com.swordlord.gozer.ui.gozerframe.GWContext} to use
      * @param list
      *            The gozer definition of the table
      * @param form

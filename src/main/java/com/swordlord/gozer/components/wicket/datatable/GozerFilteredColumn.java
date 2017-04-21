@@ -20,12 +20,12 @@
  **
  **-----------------------------------------------------------------------------
  **
- ** $Id: GozerFilteredColumn.java 1363 2012-10-19 15:22:22Z LordEidi $
+ ** $Id:  $
  **
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.datatable;
 
-import static com.swordlord.sobf.wicket.main.FilterState.escapePropertyPath;
+import com.swordlord.sobf.wicket.main.FilterState.escapePropertyPath;
 
 import java.util.Date;
 import java.util.List;

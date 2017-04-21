@@ -20,7 +20,7 @@
 **
 **-----------------------------------------------------------------------------
 **
-** $Id: GWFKeyButton.java 1361 2012-04-15 11:04:14Z LordEidi $
+** $Id:  $
 **
 -----------------------------------------------------------------------------*/
 package com.swordlord.gozer.components.wicket.action.button;
@@ -28,13 +28,13 @@ package com.swordlord.gozer.components.wicket.action.button;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
-import com.swordlord.common.ui.icons.Icons;
+import com.swordlord.gozer.ui.icons.Icons;
 import com.swordlord.gozer.databinding.DataBinding;
 import com.swordlord.gozer.eventhandler.generic.GozerController;
 import com.swordlord.gozer.eventhandler.generic.GozerFrameStatus;
 import com.swordlord.jalapeno.dataview.DataViewBase;
-import com.swordlord.sobf.wicket.ui.gozerframe.GWContext;
-import com.swordlord.sobf.wicket.ui.modal.ModalWindowEx;
+import com.swordlord.gozer.ui.gozerframe.GWContext;
+import com.swordlord.gozer.ui.modal.ModalWindowEx;
 
 /**
  * TODO JavaDoc for GWFKeyButton.java
