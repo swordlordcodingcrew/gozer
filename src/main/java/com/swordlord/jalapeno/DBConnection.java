@@ -55,11 +55,13 @@ import org.apache.cayenne.validation.ValidationFailure;
 import org.apache.cayenne.validation.ValidationResult;
 import com.swordlord.jalapeno.access.DataContextEx;
 import com.swordlord.jalapeno.datacontainer.DataContainer;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 
 public class DBConnection
 {
-	protected Logger LOG = LoggerFactory.getLogger(DBConnection.class);
+	protected Log LOG = LogFactory.getLog(DBConnection.class);
 
 	private static DBConnection _instance;
 	private static Configuration _configuration;

@@ -28,6 +28,7 @@ package com.swordlord.gozer.ui.gozerframe;
 import java.io.InputStream;
 import java.text.MessageFormat;
 
+import com.swordlord.gozer.file.GozerFileLoader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -42,9 +43,7 @@ import com.swordlord.gozer.components.generic.box.GFrame;
 import com.swordlord.gozer.eventhandler.generic.GozerDisplayMode;
 import com.swordlord.gozer.frame.IGozerFrameExtension;
 import com.swordlord.gozer.renderer.wicket.WicketRenderer;
-import com.swordlord.gozer.util.ResourceLoader;
 import com.swordlord.jalapeno.datacontainer.DataContainer;
-import com.swordlord.sobf.common.jcr.JcrHelper;
 
 @SuppressWarnings("serial")
 public class WicketGozerPanel extends Panel
@@ -79,12 +78,8 @@ public class WicketGozerPanel extends Panel
 			String layoutFileName = gfe.getGozerLayoutFileName();
 			
 			//Search the gozer configuration file first in the JCR Repository then on the file system. 
-			InputStream inputStream = JcrHelper.instance().getGozerLayout(layoutFileName);
-			if (inputStream == null)
-			{			    
-                inputStream = ResourceLoader.loadResource(getApplication(), layoutFileName, getClass());
-			}
-			
+			InputStream inputStream = GozerFileLoader.getGozerLayout(getApplication(), layoutFileName);
+
 			SAXBuilder sb = new SAXBuilder();
 			Document document = sb.build(inputStream);
 

@@ -46,10 +46,6 @@ import com.swordlord.gozer.databinding.DataBindingElement;
 import com.swordlord.jalapeno.access.DataContextEx;
 import com.swordlord.jalapeno.datacontainer.DataContainer;
 import com.swordlord.jalapeno.ead.EADManager;
-import com.swordlord.repository.businessobject.EntityAttributeValue.EntityAttributeValueBO;
-import com.swordlord.repository.datarow.EntityAttributeDefinition.EntityAttributeDefinitionDataRow;
-import com.swordlord.repository.datarow.EntityAttributeValue.EntityAttributeValueDataRow;
-import com.swordlord.repository.datatable.EntityAttributeValue.EntityAttributeValueDataTable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -196,7 +192,9 @@ public class DataRowBase extends CayenneDataObject
 			//ctx.prepareForAccess(object, property)
 	        //DataObject dobj = (DataObject) DataObjectUtils.objectForPK(ctx,	objectId);
 		}
-		
+
+		// TODO EAD will be added later
+		/*
 		if (EADManager.instance().isAttributeVirtual(getTableName(), strKey))
 		{
 			Object val = null;
@@ -209,6 +207,8 @@ public class DataRowBase extends CayenneDataObject
 			{
 				dc = new DataContainer();
 			}
+
+
 			
 			// Search EntityAttributeDefinition for the Table/strKey
 			EntityAttributeDefinitionDataRow definitionRow = EADManager.instance().getAttributeDefinition(getTableName(), strKey);
@@ -229,6 +229,7 @@ public class DataRowBase extends CayenneDataObject
 
 			return val;
         }
+        */
         return readProperty(strKey);
 	}
 
@@ -306,6 +307,8 @@ public class DataRowBase extends CayenneDataObject
 			setRelation((DataRowBase) value);
 		} else
 		{
+			// TODO EAD will be added later
+		/*
 			if (EADManager.instance().isAttributeVirtual(getTableName(), strKey))
 			{
 				DataContainer dc;
@@ -350,6 +353,7 @@ public class DataRowBase extends CayenneDataObject
 				}
 
 			} else
+			*/
 				writeProperty(strKey, value);
 		}
 	}
