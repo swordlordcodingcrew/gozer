@@ -19,7 +19,7 @@
  **
  **-----------------------------------------------------------------------------
  **
- ** $Id: GozerFrameExtensionBase.java 1259 2011-11-30 09:50:34Z yvc $
+ ** $Id:  $
  **
 -----------------------------------------------------------------------------*/
 
@@ -27,38 +27,31 @@ package com.swordlord.gozer.frame;
 
 import java.io.Serializable;
 import java.text.MessageFormat;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 
-import org.apache.log4j.Logger;
+import com.swordlord.common.i18n.Translator;
+import com.swordlord.gozer.components.generic.action.IGozerAction;
+import com.swordlord.gozer.databinding.DataBinding;
+import com.swordlord.gozer.databinding.DataBindingMember;
+import com.swordlord.gozer.databinding.FrameDataBindingContext;
+import com.swordlord.gozer.eventhandler.generic.GozerActionEvent;
+import com.swordlord.gozer.eventhandler.generic.GozerController;
+import com.swordlord.gozer.session.IGozerSessionInfo;
+import com.swordlord.gozer.ui.icons.Icons;
+import com.swordlord.jalapeno.businessobject.BusinessObjectBase;
+import com.swordlord.jalapeno.datacontainer.DataContainer;
+import com.swordlord.jalapeno.datarow.DataRowBase;
+import com.swordlord.jalapeno.datarow.DataRowKeyBase;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.somap.common.ui.icons.Icons;
-import org.somap.gozer.components.generic.action.IGozerAction;
-import org.somap.gozer.databinding.DataBinding;
-import org.somap.gozer.databinding.DataBindingMember;
-import org.somap.gozer.databinding.FrameDataBindingContext;
-import org.somap.gozer.eventhandler.generic.GozerActionEvent;
-import org.somap.gozer.eventhandler.generic.GozerController;
-import org.somap.gozer.frame.IGozerFrameExtension;
-import org.somap.gozer.session.IGozerSessionInfo;
-import org.somap.jalapeno.datacontainer.DataContainer;
-import org.somap.jalapeno.datarow.DataRowBase;
-import org.somap.jalapeno.datarow.DataRowKeyBase;
-import org.somap.jalapeno.dataview.DataViewBase;
-import org.somap.repository.businessobject.BusinessObjectBase;
-import org.somap.repository.datarow.Role.RoleDataRow;
-import org.somap.repository.datarow.Role.base.RoleDataRowBase;
-import org.somap.sobf.common.i18n.Translator;
-import org.somap.sobf.common.logging.Log;
-import org.somap.sobf.wicket.ui.page.RootPage;
 
 @SuppressWarnings("serial")
 public abstract class GozerFrameExtensionBase implements IGozerFrameExtension, Serializable
 {
-	protected static final Logger LOG = Log.instance().getLogger();
-	private static final Logger LOG_SEC = Log.instance().getLogger(Log.SECURITY);
+	private static final Log LOG = LogFactory.getLog(GozerFrameExtensionBase.class);
 	
 	private Translator _translator;
 	
@@ -120,7 +113,7 @@ public abstract class GozerFrameExtensionBase implements IGozerFrameExtension, S
 		// example: core.frame.gap_analysis.compliancefe.edit
 		String permission = MessageFormat.format("{0}:{1}:{2}", PERMISSION_PREFIX, strAction, strFrame);
 		
-		LOG_SEC.info("Checking permission: " + permission);
+		LOG.info("Checking permission: " + permission);
 		
 		return permission;
 	}
@@ -358,30 +351,6 @@ public abstract class GozerFrameExtensionBase implements IGozerFrameExtension, S
     public void setPage(RootPage page)
     {
         _rootPage = page;
-    }
-	
-
-    /**
-     * Search the ROle AV
-     * 
-     * @return AV role
-     */
-    protected RoleDataRow getRoleAV()
-    {
-        DataBindingMember dbmRole = new DataBindingMember("@Role[0].code");
-        DataViewBase dvRole = getDataBindingContext().getDataBindingManager(dbmRole).getDataView(dbmRole);
-        dvRole.getDataTable().fill();
-        RoleDataRow roleAV = null;
-
-        for (Iterator<DataRowBase> iter = dvRole.getRows().iterator(); iter.hasNext();)
-        {
-            DataRowBase dataRowBase = iter.next();
-            if (((RoleDataRowBase) dataRowBase).getCode().equals("0"))
-            {
-                roleAV = (RoleDataRow) dataRowBase;
-            }
-        }
-        return roleAV;
     }
 
 }

@@ -178,13 +178,6 @@ public class GWDetailPanel extends GWPanel
 
                         item.add(detailPredefinedListFieldPanel);
                     }
-                    else if (formObject.getClass().equals(GLibraryField.class))
-                    {
-                        GWDetailLibraryPanel detailLibraryPanel = new GWDetailLibraryPanel("cell", detailModel, (GLibraryField) formObject, GWDetailPanel.this);
-                        detailLibraryPanel.setRenderBodyOnly(true);
-
-                        item.add(detailLibraryPanel);
-                    }
                     else if (formObject.getClass().equals(GOneToNField.class))
                     {
                         GWDetailOneToNPanel detailOneToNPanel = new GWDetailOneToNPanel("cell", detailModel, (GOneToNField) formObject, GWDetailPanel.this);

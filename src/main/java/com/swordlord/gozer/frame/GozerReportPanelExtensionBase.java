@@ -19,21 +19,20 @@
  **
  **-----------------------------------------------------------------------------
  **
- ** $Id: GozerReportPanelExtensionBase.java 1170 2011-10-07 16:24:10Z awiesmann $
+ ** $Id: GozerReportPanelExtensionBase.java 1170 2011-10-07 16:24:10Z ... $
  **
 -----------------------------------------------------------------------------*/
 
 package com.swordlord.gozer.frame;
 
-import org.somap.gozer.databinding.ReportDataBindingContext;
-import org.somap.gozer.eventhandler.generic.ReportController;
-import org.somap.gozer.frame.GozerReportExtension;
-import org.somap.gozer.session.IGozerSessionInfo;
-import org.somap.jalapeno.datacontainer.DataContainer;
-import org.somap.jalapeno.datarow.DataRowKeyBase;
-import org.somap.gozer.databinding.DataBindingContext;
-import org.somap.sobf.common.config.UserPrefs;
-import org.somap.sobf.common.i18n.Translator;
+import com.swordlord.common.i18n.Translator;
+import com.swordlord.common.prefs.UserPrefs;
+import com.swordlord.gozer.databinding.DataBindingContext;
+import com.swordlord.gozer.databinding.ReportDataBindingContext;
+import com.swordlord.gozer.eventhandler.generic.ReportController;
+import com.swordlord.gozer.session.IGozerSessionInfo;
+import com.swordlord.jalapeno.datacontainer.DataContainer;
+import com.swordlord.jalapeno.datarow.DataRowKeyBase;
 
 @SuppressWarnings("serial")
 public abstract class GozerReportPanelExtensionBase extends GozerReportExtension

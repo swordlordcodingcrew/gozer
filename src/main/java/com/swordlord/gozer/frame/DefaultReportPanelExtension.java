@@ -44,7 +44,7 @@ import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.query.SQLTemplate;
 
 /**
- * @author awiesmann
+ * @author ...
  * 
  */
 @SuppressWarnings("serial")
